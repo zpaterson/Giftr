@@ -8,14 +8,19 @@ import MenuItem from 'material-ui/MenuItem';
 // set up Sequel Pro tables
 
 class Search extends Component {
+    state = {
+        searchText: "",
+        amount: 15,
+        products: []
+    }
 
   render() {
-     // console.log(this.state.images);
+    // console.log(this.state.products);
     return (
       <div>
         <TextField
             name="searchText"
-           // value={this.state.searchText}
+            value={this.state.searchText}
             onChange={this.onTextChange}
             floatingLabelText="Search For Gifts"
             fullWidth={true}
@@ -24,8 +29,8 @@ class Search extends Component {
         <SelectField
             name="results"
             floatingLabelText="Results"
-            //value={this.state.results}
-            onChange={this.onResultsChange}
+            value={this.state.value}
+            onChange={this.handleChange}
         >
             <MenuItem value={5} primaryText="5" />
             <MenuItem value={10} primaryText="10" />

@@ -11,15 +11,14 @@ class Products extends Component {
     }
 
     componentDidMount(){
-    // switch fetch with axios
      fetch('/products')
         .then(res => res.json())
          .then(products => {
-          //console.log(products);
+          console.log(products);
 
-             this.setState({ products: products.results });
+             this.setState({ products: products });
                 // , () => 
-                // console.log('Items fetched..' , products));   
+                 console.log('Items fetched..' , products);   
         })
     }
     
@@ -28,11 +27,11 @@ class Products extends Component {
         return (
             <div>
                 <h2>Gifts</h2>
-                <ul>
+                {/* <ul>
                     {this.state.products.map(product =>
-                        <li key={product.id}>{product.title}</li>
+                        <li key={product.id}>{product.title} {product.description}</li>
                     )}
-                </ul>
+                </ul> */}
             </div>
         );
     }
