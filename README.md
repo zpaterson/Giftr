@@ -4,22 +4,25 @@ An app that helps you select the perfect gift for those times you just don’t k
 
 **Tech Stack:** SQL, Express, React, Node
 
-**Project Map:** [https://docs.google.com/document/d/1X7YQfvnJKm4Ng_a9i5zoWpwS0UKnWzWGpddiF6J6Kh0/edit]
+**Project Map:** https://docs.google.com/document/d/1X7YQfvnJKm4Ng_a9i5zoWpwS0UKnWzWGpddiF6J6Kh0/edit
 
-**Techtonica Project Outline:** [https://github.com/Techtonica/curriculum/blob/master/projects/final-project/final-project.md]
+**Techtonica Project Outline:** https://github.com/Techtonica/curriculum/blob/master/projects/final-project/final-project.md
 
 ***
 
 ## App Setup:
 
 1. Clone this repo to your desktop.
+
    `cd desktop` then `git clone https://github.com/lianthompson/final_react_project.git`
    
 2. Go into the folder and install the dependencies.
 
     `cd final-react-project` `npm install`
 
-3. Create an .env file and add your API key to it. (Request your own key here: [https://www.etsy.com/developers/documentation/getting_started/api_basics])
+3. Create an .env file and add your API key to it. 
+
+   (Request your own key here: https://www.etsy.com/developers/documentation/getting_started/api_basics]
 
     `touch .env` 
     `REACT_APP_ETSY_API_KEY={YOUR_KEY_HERE}`
@@ -30,12 +33,12 @@ An app that helps you select the perfect gift for those times you just don’t k
 
 ## MySQL Database Setup:
 
-1. Download `Sequel Pro` ([http://www.sequelpro.com/])
+1. Download `Sequel Pro` (http://www.sequelpro.com/)
 
 2. Open `Sequel Pro` and enter the following to establish a connection:
 
-    ```Host: 127.0.0.1
-       Username: root```
+    `Host: 127.0.0.1`
+    `Username: root`
    
 3. Create a database named `Giftr` with the tables `Products`, `Purchases`, `Recipients`, `Users`.
 
