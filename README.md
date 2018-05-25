@@ -22,7 +22,7 @@ An app that helps you select the perfect gift for those times you just don’t k
 
 3. Create an .env file and add your API key to it. 
 
-   (Request your own key here: https://www.etsy.com/developers/documentation/getting_started/api_basics]
+   (Request your own key here: https://www.etsy.com/developers/documentation/getting_started/api_basics)
 
     `touch .env` 
     `REACT_APP_ETSY_API_KEY={YOUR_KEY_HERE}`
