@@ -3,35 +3,32 @@ import './products.css';
 
 
 class Products extends Component {
-    constructor(){
-        super();
-        this.state = {
+    state = {
             products:[]
-        };
-    }
+    };
 
     componentDidMount(){
-     fetch('/products')
-        .then(res => res.json())
-         .then(products => {
-          console.log(products);
+        this.getProducts();
+    }
 
-             this.setState({ products: products });
-                // , () => 
-                 console.log('Items fetched..' , products);   
-        })
+    getProducts = _ => {
+        fetch('http://localhost:4000/products')
+            .then(res => res.json())
+            .then(res => this.setState({ products: res.data }))
+            .catch(err => console.error(err))
+                // console.log(data);
     }
     
+    renderProduct = ({ product_id, name }) => 
+        <li 
+            key={product_id}>{name}
+        </li>
 
     render() {
+        const { products } = this.state;
         return (
-            <div>
-                <h2>Gifts</h2>
-                {/* <ul>
-                    {this.state.products.map(product =>
-                        <li key={product.id}>{product.title} {product.description}</li>
-                    )}
-                </ul> */}
+            <div className="Products">
+             {products.map(this.renderProduct)}
             </div>
         );
     }

@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const request = require('request');
-const port = 3000;
+// const port = 3000;
 // change to 3001 for create-react-app 
 const mysql = require('mysql');
 require('dotenv').load();
@@ -60,4 +60,4 @@ app.get('/', (req, res) => {
     // });
  );
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(4000, () => console.log(`Listening on port 4000`));
