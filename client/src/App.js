@@ -10,7 +10,7 @@ import Products from './components/products/products';
 
 class App extends Component {
   state = { products: [] }
-  
+
   render() {
     return (
       <MuiThemeProvider>
