@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const request = require('request');
-// const port = 3000;
-// change to 3001 for create-react-app 
+const port = 4000;
+// change to 3001 for create-react-app
 const mysql = require('mysql');
 require('dotenv').load();
 // create authO developer account, apply sample code to here, create sample link
@@ -24,7 +24,7 @@ connection.connect(err => {
     if(err) {
         return err;
     }
-    console.log(connection);
+    // console.log(connection);
 });
 
 app.use(cors({ credentials: true, origin: true }));
@@ -60,4 +60,4 @@ app.get('/', (req, res) => {
     // });
  );
 
-app.listen(4000, () => console.log(`Listening on port 4000`));
+app.listen(port, () => console.log(`Listening on port ${port}`));
