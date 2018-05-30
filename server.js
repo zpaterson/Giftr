@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const request = require('request');
+const bodyParser = require('body-parser');
 // const port = 3000;
 // change to 3001 for create-react-app 
 const mysql = require('mysql');
@@ -30,7 +31,13 @@ connection.connect(err => {
 app.use(cors({ credentials: true, origin: true }));
 
 app.get('/', (req, res) => {
-    res.send('go to /products to see products')
+    res.send('go to /products for products');
+});
+
+app.post('/register', (req, res) => {
+    var register = req.body;
+        if(err) throw error;
+    res.render('Registration Complete');
 });
 
  app.get('/products', function(req, res){

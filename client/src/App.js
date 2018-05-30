@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/navbar/navbar';
 import Search from './components/search/search';
 import Products from './components/products/products';
+import Signup from './components/signup/signup';
 
 
 
@@ -18,6 +19,7 @@ class App extends Component {
           <NavBar />
           <Search />
           <Products />
+          <Signup />
         </div>
       </MuiThemeProvider>
     );

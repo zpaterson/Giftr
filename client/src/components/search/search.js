@@ -18,6 +18,20 @@ class Search extends Component {
     // console.log(this.state.products);
     return (
       <div>
+        {/* <br/>
+        <form>
+            <input type="text" name="firstName" placeholder="First Name"/>
+                <br />
+            <input type="text" name="lastName" placeholder="Last Name"/>
+                <br />
+            <input type="text" name="password" placeholder="Password"/>
+                <br />
+            <input type="text" name="confirmPassword"placeholder="Confirm Password"/>
+                <br />
+            <input type="email" name="email"placeholder="email"/>
+                <br/>
+            <button>Submit</button>
+        </form> */}
         <TextField
             name="searchText"
             value={this.state.searchText}
