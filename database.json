@@ -1,0 +1,9 @@
+{
+  "dev": {
+    "host": "localhost",
+    "user": "root",
+    "database": "Giftr",
+    "driver": "mysql",
+    "multipleStatements": true
+  }
+}
