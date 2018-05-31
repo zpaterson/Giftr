@@ -4,7 +4,7 @@ import './products.css';
 
 class Products extends Component {
     state = {
-            products:[]
+        products: ''
     };
 
     componentDidMount(){
@@ -12,11 +12,15 @@ class Products extends Component {
     }
 
     getProducts = _ => {
-        fetch('http://localhost:4000/products')
-            .then(res => res.json())
-            .then(res => this.setState({ products: res.data }))
+        fetch('/products')
+            .then((res) => {
+                return res.json();
+            })
+            .then(res => this.setState({ products: res.data[0].title }))
             .catch(err => console.error(err))
-                // console.log(data);
+          // console.log(data);
+        //   console.log(this.state.products);
+                
     }
     
     renderProduct = ({ product_id, name }) => 
@@ -28,7 +32,8 @@ class Products extends Component {
         const { products } = this.state;
         return (
             <div className="Products">
-             {products.map(this.renderProduct)}
+            {/* {products.map(this.renderProduct)} */}
+                <p>{this.state.products}</p>
             </div>
         );
     }

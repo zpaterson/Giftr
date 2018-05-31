@@ -2,14 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const request = require('request');
-<<<<<<< HEAD
+const port = 8000;
 const bodyParser = require('body-parser');
-// const port = 3000;
-// change to 3001 for create-react-app 
-=======
-const port = 4000;
 // change to 3001 for create-react-app
->>>>>>> 36bb256d74c7bfe2a7b69059693a5987fbedc7e1
 const mysql = require('mysql');
 require('dotenv').load();
 // create authO developer account, apply sample code to here, create sample link
@@ -35,14 +30,25 @@ connection.connect(err => {
 
 app.use(cors({ credentials: true, origin: true }));
 
+app.use(bodyParser.json());
+
 app.get('/', (req, res) => {
     res.send('go to /products for products');
 });
 
 app.post('/register', (req, res) => {
-    var register = req.body;
-        if(err) throw error;
-    res.render('Registration Complete');
+    let body = req.body;
+    var username = req.body.username;
+    var email = req.body.email;
+    var birthdate = req.body.birthdate;
+    console.log("username, email, birthdate: " + username, email, birthdate);
+    
+    connection.query('INSERT INTO users VALUES (username, email, birthdate)', function(err, results) {
+        if (err) throw err;
+    })
+
+    // var register = req.body;
+    res.send({express: 'hello from express'});
 });
 
  app.get('/products', function(req, res){
@@ -71,5 +77,6 @@ app.post('/register', (req, res) => {
         }
     // });
  );
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

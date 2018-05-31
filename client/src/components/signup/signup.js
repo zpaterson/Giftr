@@ -38,12 +38,28 @@ class Signup extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.target);
+        // const data = new FormData(event.target);
+        const username = event.target.username.value;
+        const email = event.target.email.value
+        const birthdate = event.target.birthdate.value
+
+        // console.log(username, email, birthdate);
 
         fetch('/register', {
             method: 'POST',
-            body: data,
-        });
+            body: JSON.stringify({
+                username: username,
+                email: email,
+                birthdate: birthdate
+            }),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     render() {
