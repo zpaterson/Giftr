@@ -36,20 +36,15 @@ app.get('/', (req, res) => {
     res.send('go to /products for products');
 });
 
+
 app.post('/register', (req, res) => {
-    let body = req.body;
-    var username = req.body.username;
-    var email = req.body.email;
-    var birthdate = req.body.birthdate;
-    console.log("username, email, birthdate: " + username, email, birthdate);
-    
-    connection.query('INSERT INTO users VALUES (username, email, birthdate)', function(err, results) {
+    console.log (req.body);
+    const user = { firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email}
+    connection.query('INSERT INTO Users SET ?', user, (err, results, fields) => {
         if (err) throw err;
     })
+})
 
-    // var register = req.body;
-    res.send({express: 'hello from express'});
-});
 
  app.get('/products', function(req, res){
      connection.query(SELECT_ALL_PRODUCTS_QUERY, (err, results) => {

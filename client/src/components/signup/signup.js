@@ -31,48 +31,48 @@
 
 
 class Signup extends React.Component {
-    constructor() {
-        super();
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    // constructor() {
+    //     super();
+    //     this.handleSubmit = this.handleSubmit.bind(this);
+    // }
 
     handleSubmit(event) {
         event.preventDefault();
         // const data = new FormData(event.target);
-        const username = event.target.username.value;
+        const firstName = event.target.firstName.value;
+        const lastName = event.target.lastName.value
         const email = event.target.email.value
-        const birthdate = event.target.birthdate.value
 
-        // console.log(username, email, birthdate);
+         console.log(firstName, lastName, email);
 
         fetch('/register', {
             method: 'POST',
             body: JSON.stringify({
-                username: username,
-                email: email,
-                birthdate: birthdate
+                firstName: firstName,
+                lastName: lastName,
+                email: email
             }),
             headers: {
                 'content-type': 'application/json'
             }
         }).then(res => res.json())
         .then(res => console.log(res))
-        .catch(err => {
-            console.log(err);
-        })
+        // .catch(err => {
+        //     console.log(err);
+    // })
     }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label htmlFor="username">Enter username</label>
-                <input id="username" name="username" type="text" />
+                <label htmlFor="firstName">First Name</label>
+                <input id="firtName" name="firstName" type="text" />
 
-                <label htmlFor="email">Enter your email</label>
+                <label htmlFor="lastName">Last Name</label>
+                <input id="lastName" name="lastName" type="text" />
+
+                <label htmlFor="email">Email</label>
                 <input id="email" name="email" type="email" />
-
-                <label htmlFor="birthdate">Enter your birth date</label>
-                <input id="birthdate" name="birthdate" type="text" />
 
                 <button>Send data!</button>
             </form>
