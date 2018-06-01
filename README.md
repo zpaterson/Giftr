@@ -40,12 +40,11 @@ An app that helps you select the perfect gift for those times you just don’t k
     `Host: 127.0.0.1`
     `Username: root`
    
-3. Create a database named `Giftr` with the tables `Products`, `Purchases`, `Recipients`, `Users`.
+3. In your root file, create and import the data with the following commands:
 
-  * In `Products` add the columns `title`, `description`, `purchase_id`
-  * In `Purchases` add the columns `product_id`, `user_id`, `recipient_id`
-  * In `Recipients` add the columns `email`, `firstName`, `lastName`
-  * In `Users` add the columns `firstName`, `lastName`, `email`
+    `mysql -u root`
+    `CREATE DATABASE Giftr`
+    `db-migrate up all`
 
 ***
 
@@ -54,11 +53,12 @@ An app that helps you select the perfect gift for those times you just don’t k
   * Display dummy data from databases on `localhost:4000/products`
   * Display landing page on `localhost:3000`
   * Display redirect page on `localhost:4000`
-  * Type text in search
+  * Add users to database
+  * Database migration scripts
 
 ## Later Features:
 
-  * User Sign in/Sign up
+  * User Sign in
   * Search retreives Etsy API data
   * Display 3 optimal gift selections
   * Purchase history page

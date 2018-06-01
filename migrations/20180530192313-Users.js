@@ -24,7 +24,8 @@ exports.up = function(db, callback) {
 };
 
 exports.down = function(db) {
-  return null;
+  return db.dropTable('Users');
+;
 };
 
 exports._meta = {
