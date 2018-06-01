@@ -1,55 +1,28 @@
- import React from 'react';
-
-// class Signup extends Component {
-//     state = {};
+import React, { Component } from 'react';
 
 
-
-//     render() {
-//         return (
-//             <div>
-//                 <br />
-//                 <form method = 'POST' action='/register'>
-//                     <input type="text" name="firstName" placeholder="First Name" />
-//                     <br />
-//                     <input type="text" name="lastName" placeholder="Last Name" />
-//                     <br />
-//                     <input type="text" name="password" placeholder="Password" />
-//                     <br />
-//                     <input type="text" name="confirmPassword" placeholder="Confirm Password" />
-//                     <br />
-//                     <input type="email" name="email" placeholder="email" />
-//                     <br />
-//                     <button>Submit</button>
-//                 </form>
-//             </div>
-//         );
-//     }
-// }
-
-// export default Signup;
-
-
-class Signup extends React.Component {
+class Signup extends Component {
+    state = {};
     // constructor() {
     //     super();
-    //     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
     // }
 
     handleSubmit(event) {
-        event.preventDefault();
-        // const data = new FormData(event.target);
+       // event.preventDefault();
         const firstName = event.target.firstName.value;
         const lastName = event.target.lastName.value
         const email = event.target.email.value
+        const password = event.target.password.value
 
-         console.log(firstName, lastName, email);
+         console.log(firstName, lastName, password, email);
 
         fetch('/register', {
             method: 'POST',
             body: JSON.stringify({
                 firstName: firstName,
                 lastName: lastName,
+                password: password,
                 email: email
             }),
             headers: {
@@ -64,15 +37,18 @@ class Signup extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} action="/register">
                 <label htmlFor="firstName">First Name</label>
-                <input id="firtName" name="firstName" type="text" />
+                <input id="firtName" name="firstName" type="text" autoComplete="given-name" />
 
                 <label htmlFor="lastName">Last Name</label>
-                <input id="lastName" name="lastName" type="text" />
+                <input id="lastName" name="lastName" type="text" autoComplete="family-name"/>
+                
+                <label htmlFor="password">password</label>
+                <input id="password" name="password" type="text" autoComplete="password"/>
 
                 <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" />
+                <input id="email" name="email" type="email" autoComplete="email"/>
 
                 <button>Send data!</button>
             </form>
