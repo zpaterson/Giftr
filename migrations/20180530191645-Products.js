@@ -23,7 +23,8 @@ exports.up = function(db, callback) {
 };
 
 exports.down = function(db) {
-  return null;
+  return db.dropTable('Products');
+;
 };
 
 exports._meta = {
