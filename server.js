@@ -14,16 +14,18 @@ require('dotenv').load();
 
 const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
 
+const API_URL = process.env.API_URL;
+
 const SELECT_ALL_PRODUCTS_QUERY = 'SELECT * FROM Products';
 
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database:'Giftr'
+    database: 'Giftr'
 });
 
 connection.connect(err => {
-    if(err) {
+    if (err) {
         return err;
     }
     // console.log(connection);
@@ -60,7 +62,7 @@ app.post('/register', (req, res) => {
         return;
     }
 
-    const user = { firstName: req.body.firstName, lastName: req.body.lastName, password:req.body.password, email: req.body.email}
+    const user = { firstName: req.body.firstName, lastName: req.body.lastName, password: req.body.password, email: req.body.email }
 
     connection.query('INSERT INTO Users SET ?', user, (err, results, fields) => {
         if (err) throw err;
@@ -70,34 +72,35 @@ app.post('/register', (req, res) => {
 })
 
 
- app.get('/products', function(req, res){
-     connection.query(SELECT_ALL_PRODUCTS_QUERY, (err, results) => {
-         if (err) {
-             console.log(err);
-             return res.send(err)
-         } else {
-             console.log(results);
-             return res.json({
-                 data: results
-             })
-         }
-     })
+app.get('/products', function (req, res) {
+    connection.query(SELECT_ALL_PRODUCTS_QUERY, (err, results) => {
+        if (err) {
+            console.log(err);
+            return res.send(err)
+        } else {
+            console.log(results);
+            return res.json({
+                data: results
+            })
+        }
+    })
+});
 
-// http://openapi.etsy.com/v2/listings/active?method=GET&api_key=
- app.get('/etsy', function(req, res) {
-     request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}`, function(error, response, body){
-        var parsedData = JSON.parse(body);  
 
-           if(!error && response.statusCode == 200) {
+app.post('/etsy', function (req, res) {
+    let keywords = req.body.keywords;
+    request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}&keywords=${keywords}&includes=Images:1`, function (error, response, body) {
+        var parsedData = JSON.parse(body);
 
-            var firstTenResults = [];
-            for( let i = 0; i < 10; i++ ) {
-            firstTenResults.push(parsedData['results'][i].title);
+        if (!error && response.statusCode == 200) {
 
-            } return res.send(firstTenResults);
+            var results = [];
+            for (let i = 0; i < 5; i++) {
+                results.push(parsedData['results'][i].title);
+
+            } return res.send(results);
         }
     });
-    });
-});
+})
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

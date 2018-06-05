@@ -12,7 +12,7 @@ class Signup extends Component {
         const email = event.target.email.value
         const password = event.target.password.value
 
-         console.log(firstName, lastName, password, email);
+        console.log(firstName, lastName, password, email);
 
         fetch('/register', {
             method: 'POST',
@@ -27,11 +27,11 @@ class Signup extends Component {
             })
         }).then(res => res.text())
 
-        // histor.push bc in react, otherwise redirect
-        .then(res => console.log(res))
+            // histor.push bc in react, otherwise redirect
+            .then(res => console.log(res))
         // .catch(err => {
         // console.log(err);
-     // })
+        // })
     }
 
     render() {
@@ -41,13 +41,13 @@ class Signup extends Component {
                 <input id="firtName" name="firstName" type="text" autoComplete="given-name" />
 
                 <label htmlFor="lastName">Last Name</label>
-                <input id="lastName" name="lastName" type="text" autoComplete="family-name"/>
-                
+                <input id="lastName" name="lastName" type="text" autoComplete="family-name" />
+
                 <label htmlFor="password">password</label>
-                <input id="password" name="password" type="text" autoComplete="password"/>
+                <input id="password" name="password" type="text" autoComplete="password" />
 
                 <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" autoComplete="email"/>
+                <input id="email" name="email" type="email" autoComplete="email" />
 
                 <button>Send data!</button>
             </form>
