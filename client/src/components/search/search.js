@@ -3,35 +3,26 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-
 // request from own endpoint, from own endpoint request from Etsy endpoint
 // set up Sequel Pro tables
 
 class Search extends Component {
-    state = {
-        searchText: "",
-        amount: 15,
-        products: []
-    }
+        state = {
+                searchText: "",
+                amount: 15,
+                products: []
+    };
+
+    // onTextChange= (e) => {
+    //     this.setState({[e.target.name]: e.target.value}, () => {
+    //         console.log('hello');
+    //     });
+    // }
 
   render() {
     // console.log(this.state.products);
     return (
       <div>
-        {/* <br/>
-        <form>
-            <input type="text" name="firstName" placeholder="First Name"/>
-                <br />
-            <input type="text" name="lastName" placeholder="Last Name"/>
-                <br />
-            <input type="text" name="password" placeholder="Password"/>
-                <br />
-            <input type="text" name="confirmPassword"placeholder="Confirm Password"/>
-                <br />
-            <input type="email" name="email"placeholder="email"/>
-                <br/>
-            <button>Submit</button>
-        </form> */}
         <TextField
             name="searchText"
             value={this.state.searchText}

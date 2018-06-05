@@ -3,13 +3,10 @@ import React, { Component } from 'react';
 
 class Signup extends Component {
     state = {};
-    // constructor() {
-    //     super();
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // }
 
     handleSubmit(event) {
-       // event.preventDefault();
+        event.preventDefault();
+        console.log("hey what's up");
         const firstName = event.target.firstName.value;
         const lastName = event.target.lastName.value
         const email = event.target.email.value
@@ -19,25 +16,27 @@ class Signup extends Component {
 
         fetch('/register', {
             method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
             body: JSON.stringify({
                 firstName: firstName,
                 lastName: lastName,
                 password: password,
                 email: email
-            }),
-            headers: {
-                'content-type': 'application/json'
-            }
-        }).then(res => res.json())
+            })
+        }).then(res => res.text())
+
+        // histor.push bc in react, otherwise redirect
         .then(res => console.log(res))
         // .catch(err => {
-        //     console.log(err);
-    // })
+        // console.log(err);
+     // })
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} action="/register">
+            <form onSubmit={this.handleSubmit} method="POST">
                 <label htmlFor="firstName">First Name</label>
                 <input id="firtName" name="firstName" type="text" autoComplete="given-name" />
 

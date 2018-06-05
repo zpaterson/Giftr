@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const router = express.Router();
 const mysql = require('mysql');
-const birds = require('./Routes/birds');
 require('dotenv').load();
 // create authO developer account, apply sample code to here, create sample link
 // implement app.get/api/me in server, go to client code and use this endpoint to make sure they are logged in
@@ -35,9 +34,8 @@ app.use(cors({ credentials: true, origin: true }));
 app.use(bodyParser.json());
 app.use(expressValidator());
 
-app.use('/birds', birds)
-
 app.get('/', (req, res) => {
+    // eventually send entire public folder
     res.send('go to /products for products');
 });
 
@@ -58,13 +56,15 @@ app.post('/register', (req, res) => {
         console.log(`errors: ${JSON.stringify(errors)}`);
 
         res.send("Registration Error");
+
+        return;
     }
 
     const user = { firstName: req.body.firstName, lastName: req.body.lastName, password:req.body.password, email: req.body.email}
 
     connection.query('INSERT INTO Users SET ?', user, (err, results, fields) => {
         if (err) throw err;
-
+        console.log("HELLO");
         res.send('Registration Complete');
     })
 })
@@ -83,30 +83,19 @@ app.post('/register', (req, res) => {
          }
      })
 
- app.get('/register', function(req, res){
-     (err, results) => {
-         if (err) {
-            console.log(err);
-            return res.send(err)
-        } else {
-            console.log('registration complete');
-    }
-    }
-})
+// http://openapi.etsy.com/v2/listings/active?method=GET&api_key=
+ app.get('/etsy', function(req, res) {
+     request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}`, function(error, response, body){
+        if(!error && response.statusCode == 200) {
+            var parsedData = JSON.parse(body);
+            return res.send(parsedData);
+            // console.log(body);
+            console.log(parsedData["results"][0]["title"]);
+            // return res.send(parsedData["results"][0]["title"]);
 
-
-    // request(`https://openapi.etsy.com/v2/featured_treasuries/listings?api_key=${API_KEY}`, function(error, response, body){
-    //     if(!error && response.statusCode == 200) {
-    //         var parsedData = JSON.parse(body);
-    //         //console.log(body);
-    //         res.send(parsedData);
-
-
-    //          res.send(body["data"]["results"][0]["title"]);
-    //          console.log(body["data"]["results"][0]["title"]);
         }
-    // });
- );
-
+    });
+    });
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

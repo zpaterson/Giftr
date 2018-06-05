@@ -12,6 +12,7 @@ class Products extends Component {
     }
 
     getProducts = _ => {
+        console.log("getting products");
         fetch('/products')
             .then((res) => {
                 return res.json();
