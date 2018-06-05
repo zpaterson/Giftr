@@ -86,13 +86,15 @@ app.post('/register', (req, res) => {
 // http://openapi.etsy.com/v2/listings/active?method=GET&api_key=
  app.get('/etsy', function(req, res) {
      request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}`, function(error, response, body){
-        if(!error && response.statusCode == 200) {
-            var parsedData = JSON.parse(body);
-            return res.send(parsedData);
-            // console.log(body);
-            console.log(parsedData["results"][0]["title"]);
-            // return res.send(parsedData["results"][0]["title"]);
+        var parsedData = JSON.parse(body);  
 
+           if(!error && response.statusCode == 200) {
+
+            var firstTenResults = [];
+            for( let i = 0; i < 10; i++ ) {
+            firstTenResults.push(parsedData['results'][i].title);
+
+            } return res.send(firstTenResults);
         }
     });
     });
