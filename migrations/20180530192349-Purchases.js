@@ -26,6 +26,7 @@ exports.up = function(db, callback) {
           onDelete: 'CASCADE',
           onUpdate: 'RESTRICT'
         },
+        // mapping is the name in the table
         mapping: 'id'
       }
     },

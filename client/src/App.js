@@ -7,12 +7,10 @@ import Products from './components/products/products';
 import Signup from './components/signup/signup';
 
 
-
-
 class App extends Component {
   state = { products: [] }
 
-  render() {
+  render() { 
     return (
       <MuiThemeProvider>
         <div>

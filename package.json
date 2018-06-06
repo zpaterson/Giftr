@@ -18,9 +18,11 @@
         "db-migrate-mysql": "^1.1.10",
         "dotenv": "^5.0.1",
         "express": "^4.16.2",
+        "express-validator": "^5.2.0",
         "material-ui": "^0.20.1",
         "mysql": "^2.15.0",
         "npm": "^6.1.0",
+        "react-router-dom": "^4.2.2",
         "request": "^2.87.0"
     },
     "devDependencies": {
