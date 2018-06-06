@@ -20,14 +20,32 @@ class Search extends Component {
     products: []
   };
 
-  getData = (query) => {
-    fetch(`http://localhost:3000/etsy=${query}`, {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json", "Access-Control-Allow-Origin": "*"
-      }
-    })
-  }
+  // componentDidMount() {
+  //   this.getData();
+  // }
+
+  // getData = (query) => {
+  //   fetch(`http://localhost:3000/etsy=${query}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       "Content-Type": "application/json", "Access-Control-Allow-Origin": "*"
+  //     }
+  //   })
+  // }
+
+  // getData = (query) => {
+  //   // looks for /etsy in server.js
+  //   fetch(`/etsy=${query}`)
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then(res => this.setState({ products: res.data[0].title }))
+  //     .catch(err => console.error(err))
+  //   // console.log(data);
+  //   //   console.log(this.state.products);
+
+  // }
+
   onTextChange = (e) => {
     e.preventDefault();
     let keyword = e.target.searchText.value;
@@ -48,6 +66,7 @@ class Search extends Component {
 
 
   render() {
+    // prints empty array in client console []
     console.log(this.state.products);
 
     return (
@@ -60,6 +79,15 @@ class Search extends Component {
           <button>Submit</button>
         </form>
         <br />
+
+        <ul>
+          {this.state.products.map(
+            product=>
+            <li>{product}</li>
+            )
+          }
+        </ul>
+
         <SelectField
           name="amount"
           floatingLabelText="Amount"
