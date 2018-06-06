@@ -14,11 +14,11 @@ An app that helps you select the perfect gift for those times you just don’t k
 
 1. Clone this repo to your desktop.
 
-   `cd desktop` then `git clone https://github.com/lianthompson/final_react_project.git`
+   `cd desktop` then `git clone https://github.com/lianthompson/Giftr.git`
    
 2. Go into the folder and install the dependencies.
 
-    `cd final-react-project` `npm install`
+    `cd client` `npm install`
 
 3. Create an .env file and add your API key to it. 
 

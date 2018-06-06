@@ -20,10 +20,6 @@ class Search extends Component {
     products: []
   };
 
-  componentDidMount() {
-    this.getData("FOO");
-  }
-
   getData = (query) => {
     fetch(`http://localhost:3000/etsy=${query}`, {
       method: 'GET',
@@ -31,9 +27,6 @@ class Search extends Component {
         "Content-Type": "application/json", "Access-Control-Allow-Origin": "*"
       }
     })
-      .then(data => data.products)
-      .then(results => this.setState({ products: results }))
-
   }
   onTextChange = (e) => {
     e.preventDefault();
@@ -48,28 +41,20 @@ class Search extends Component {
         'content-type': 'application/json'
       }
     }).then(res => res.json())
-      .then(res => {
-        let list = '<ul>';
-        res.forEach(item => {
-          list += `<li>${item}</li>`
-        })
-        list += '</ul>';
-
-        document.getElementById('results').innerHTML = list;
-
-      })
+      // .then(data => data.products)
+      .then(results => this.setState({ products: results }))
       .catch(err => console.log(err))
   };
 
 
   render() {
-    console.log(this.state.images);
+    console.log(this.state.products);
 
     return (
       <div>
         <div id='results'></div>
         <form onSubmit={this.onTextChange} method="post" action='/etsy'>
-          <label htmlFor="searchText">Search For Gifts</label>
+          <label htmlFor="searchText">What does your friend like?</label>
           <input id="searchText" name="searchText" type="text" autoComplete="given-name" />
 
           <button>Submit</button>
