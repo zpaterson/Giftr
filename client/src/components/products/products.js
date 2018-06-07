@@ -36,7 +36,7 @@ class Products extends Component {
         return (
             <div className="Products">
                  {/* {products.map(product =>this.renderProduct)} */}
-                 <p>{this.state.products}</p>
+                 <p>{products}</p>
              </div>
         );
     }

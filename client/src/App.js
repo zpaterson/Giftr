@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './App.css';
-// eslint-disable-next-line
-import NavBar from './components/navbar/navbar';
 import Search from './components/search/search';
 import Products from './components/products/products';
-import Signup from './components/signup/signup';
 
 
 
@@ -32,14 +28,13 @@ class App extends Component {
 
     const { isAuthenticated } = this.props.auth;
 
-    return (
 
-      // 0Auth code
+    return (
       <div>
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Auth0 - React</a>
+              <span>Auth0 - React</span>
             </Navbar.Brand>
             <Button
               bsStyle="primary"
@@ -74,15 +69,10 @@ class App extends Component {
             }
           </Navbar.Header>
         </Navbar>
-      <MuiThemeProvider>
 
-          <NavBar />
-          <Search />
-          <Products />
-          <Signup />
-        
-      </MuiThemeProvider>
-      </div >
+        <Search />
+        <Products />
+      </div>
     );
   }
 }
