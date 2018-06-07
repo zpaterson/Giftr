@@ -19,6 +19,7 @@
         "dotenv": "^5.0.1",
         "express": "^4.16.2",
         "express-validator": "^5.2.0",
+        "history": "^4.7.2",
         "material-ui": "^0.20.1",
         "mysql": "^2.15.0",
         "npm": "^6.1.0",
