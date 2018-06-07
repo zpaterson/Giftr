@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Router } from 'react-router-dom';
-import App from './App';
-import Home from './Home/Home';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
+import MenuBar from './components/MenuBar';
+import Home from './views/Home';
 
 const auth = new Auth();
 
@@ -17,14 +17,19 @@ const handleAuthentication = ({location}) => {
 export const makeMainRoutes = () => {
   return (
       <Router history={history}>
-        <div>
-          <Route path="/" render={(props) => <App auth={auth} {...props} />} />
-          <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
+        <div className="view-container">
+          <MenuBar auth={auth} />
+          {/* Routes map to Views
+              -- each component under View is the main content area for that route
+          */}
+          <Route path="/" render={(props) => <Home auth={auth} {...props} />} />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 
           }}/>
         </div>
+
+
       </Router>
   );
 }

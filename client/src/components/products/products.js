@@ -4,15 +4,17 @@ import './products.css';
 
 class Products extends Component {
     state = {
-        products: ''
+        products: []
     };
 
+    // displays mysql data 
     componentDidMount() {
         this.getProducts();
     }
 
     getProducts = _ => {
         console.log("getting products");
+        // looks for /products in server.js
         fetch('/products')
             .then((res) => {
                 return res.json();
@@ -24,18 +26,18 @@ class Products extends Component {
 
     }
 
-    renderProduct = ({ product_id, name }) =>
-        <li
-            key={product_id}>{name}
-        </li>
+    // renderProduct = ({ product_id, name }) =>
+    //     <li
+    //         key={product_id}>{name}
+    //     </li>
 
     render() {
         const { products } = this.state;
         return (
             <div className="Products">
-                {/* {products.map(this.renderProduct)} */}
-                <p>{this.state.products}</p>
-            </div>
+                 {/* {products.map(product =>this.renderProduct)} */}
+                 <p>{products}</p>
+             </div>
         );
     }
 }
