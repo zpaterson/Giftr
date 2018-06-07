@@ -1,46 +1,12 @@
 import React, { Component } from 'react';
-//import Products from '../products/products';
-
-
-// request from own endpoint, from own endpoint request from Etsy endpoint
-// set up Sequel Pro tables
-
-//const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
-
-//const API_URL = process.env.API_URL;
 
 export default class Search extends Component {
   state = {
     searchText: "",
     amount: 15,
     products: []
-  };
+};
 
-  // componentDidMount() {
-  //   this.getData();
-  // }
-
-  // getData = (query) => {
-  //   fetch(`http://localhost:3000/etsy=${query}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       "Content-Type": "application/json", "Access-Control-Allow-Origin": "*"
-  //     }
-  //   })
-  // }
-
-  // getData = (query) => {
-  //   // looks for /etsy in server.js
-  //   fetch(`/etsy=${query}`)
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then(res => this.setState({ products: res.data[0].title }))
-  //     .catch(err => console.error(err))
-  //   // console.log(data);
-  //   //   console.log(this.state.products);
-
-  // }
 
   onTextChange = (e) => {
     e.preventDefault();
@@ -62,9 +28,7 @@ export default class Search extends Component {
 
 
   render() {
-    // prints empty array in client console []
-    console.log(this.state.products);
-
+    console.log(this.state.products)
     return (
       <div className="search-form">
         <form onSubmit={this.onTextChange} method="post" action='/etsy'>
@@ -73,11 +37,12 @@ export default class Search extends Component {
           <button>Submit</button>
         </form>
         <br />
-
         <ul>
           {this.state.products.map(
             product=>
-            <li>{product}</li>
+             <li key={product}>
+               <input type="checkbox"/>{product}
+            </li>
             )
           }
         </ul>
