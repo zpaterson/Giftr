@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const router = express.Router();
 const mysql = require('mysql');
+const auth0 = require('auth0-oauth2-express');
 require('dotenv').load();
 
 const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
@@ -34,6 +35,7 @@ connection.connect(err => {
 app.use(cors({ credentials: true, origin: true }));
 app.use(bodyParser.json());
 app.use(expressValidator());
+app.use(auth0({}));
 
 
 app.get('/', (req, res) => {
@@ -41,6 +43,9 @@ app.get('/', (req, res) => {
     res.send('go to /products for products');
 });
 
+app.get('/callback', (req, res) => {
+    res.send("hello");
+});
 
 // Signup requirements
 app.post('/register', (req, res) => {

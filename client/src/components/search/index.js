@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 
 //const API_URL = process.env.API_URL;
 
-class Search extends Component {
+export default class Search extends Component {
   state = {
     searchText: "",
     amount: 15,
@@ -66,12 +66,10 @@ class Search extends Component {
     console.log(this.state.products);
 
     return (
-      <div>
-        <div id='results'></div>
+      <div className="search-form">
         <form onSubmit={this.onTextChange} method="post" action='/etsy'>
-          <label htmlFor="searchText">What does your friend like?</label>
+          <label htmlFor="searchText">What does your friend like?</label><br />
           <input id="searchText" name="searchText" type="text" autoComplete="given-name" />
-
           <button>Submit</button>
         </form>
         <br />
@@ -88,5 +86,3 @@ class Search extends Component {
     );
   }
 }
-
-export default Search;
