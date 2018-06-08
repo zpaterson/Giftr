@@ -7,15 +7,45 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const router = express.Router();
 const mysql = require('mysql');
-const auth0 = require('auth0-oauth2-express');
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
 require('dotenv').load();
 
 const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
 
 const API_URL = process.env.API_URL;
 
+const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
+
+const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
+
+const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN;
+
+
 const SELECT_ALL_PRODUCTS_QUERY = 'SELECT * FROM Products';
 
+const strategy = new Auth0Strategy(
+    {
+        domain: 'AUTH0_DOMAIN',
+        clientID: 'AUTH0_CLIENT_ID',
+        clientSecret:
+            'AUTH0_CLIENT_SECRET',
+        callbackURL: '/callback',
+    },
+    (accessToken, refreshToken, extraParams, profile, done) => {
+        return done(null, profile);
+    },
+);
+
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+    done(null, user);
+});
+
+passport.use(strategy);
 
 // Create mySql connection
 const connection = mysql.createConnection({
@@ -35,17 +65,27 @@ connection.connect(err => {
 app.use(cors({ credentials: true, origin: true }));
 app.use(bodyParser.json());
 app.use(expressValidator());
-app.use(auth0({}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.get('/', (req, res) => {
     // eventually send entire public folder
-    res.send('go to /products for products');
+    res.send(JSON.stringify(req.user));
 });
 
-app.get('/callback', (req, res) => {
-    res.send("hello");
-});
+app.get('/login', passport.authenticate('auth0', {}), (req, res) =>
+    res.redirect('/'),
+);
+
+app.get(
+    '/callback',
+    passport.authenticate('auth0', { failureRedirect: '/' }),
+    (req, res) => {
+        console.log('USER', req.user);
+        res.redirect(req.session.returnTo || '/');
+    },
+);
 
 // Signup requirements
 app.post('/register', (req, res) => {

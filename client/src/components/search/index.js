@@ -4,7 +4,8 @@ export default class Search extends Component {
   state = {
     searchText: "",
     amount: 15,
-    products: []
+    products: [],
+    itemChecked: {}
 };
 
 
@@ -26,6 +27,11 @@ export default class Search extends Component {
       .catch(err => console.log(err))
   };
 
+  checkItem(product, e){
+    let itemChecked = this.state.itemChecked;
+    itemChecked[product.product] = e.target.checked;
+    this.setState({itemChecked});
+  }
 
   render() {
     console.log(this.state.products)
@@ -41,7 +47,7 @@ export default class Search extends Component {
           {this.state.products.map(
             product=>
              <li key={product}>
-               <input type="checkbox"/>{product}
+               <input type="checkbox" onChange={(e) => this.checkItem({product}, e) }/>{product}
             </li>
             )
           }
