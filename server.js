@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const router = express.Router();
 const mysql = require('mysql');
-const auth0 = require('auth0-oauth2-express');
+const morgan = require('morgan')
 require('dotenv').load();
 
 const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
@@ -15,7 +15,6 @@ const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
 const API_URL = process.env.API_URL;
 
 const SELECT_ALL_PRODUCTS_QUERY = 'SELECT * FROM Products';
-
 
 // Create mySql connection
 const connection = mysql.createConnection({
@@ -35,17 +34,14 @@ connection.connect(err => {
 app.use(cors({ credentials: true, origin: true }));
 app.use(bodyParser.json());
 app.use(expressValidator());
-app.use(auth0({}));
+app.use(morgan("dev"));
 
 
-app.get('/', (req, res) => {
-    // eventually send entire public folder
-    res.send('go to /products for products');
-});
+// app.get('/', (req, res) => {
+//     // eventually send entire public folder
+//     res.send(JSON.stringify(req.user));
+// });
 
-app.get('/callback', (req, res) => {
-    res.send("hello");
-});
 
 // Signup requirements
 app.post('/register', (req, res) => {
@@ -60,7 +56,7 @@ app.post('/register', (req, res) => {
 
     const errors = req.validationErrors();
     if (errors) {
-        console.log(`errors: ${JSON.stringify(errors)}`);
+        console.log(`errors: ${ JSON.stringify(errors) } `);
 
         res.send("Registration Error");
 
@@ -74,6 +70,23 @@ app.post('/register', (req, res) => {
         if (err) throw err;
         console.log("HELLO");
         res.send('Registration Complete');
+    })
+})
+
+app.post('/added', (req, res) => {
+
+    const productInfo = { 
+        listing_id: req.body.listing_id, 
+        title: req.body.title, 
+        description: req.body.description 
+        
+    };
+    console.log("hello lian", productInfo);
+
+    // Add users to db 
+    connection.query('INSERT INTO Products SET ?', productInfo, (err, results, fields) => {
+        if (err) throw err;
+        res.send({added: 1});
     })
 })
 
@@ -92,25 +105,21 @@ app.get('/products', function (req, res) {
         }
     })
 });
-
-
-app.post('/etsy', function (req, res) {
+    app.post('/etsy', function (req, res) {
     let keywords = req.body.keywords;
     console.log(req.body);
     request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}&keywords=${keywords}&includes=Images:1`, function (error, response, body) {
-        var parsedData = JSON.parse(body);
+var parsedData = JSON.parse(body);
 
-        if (!error && response.statusCode == 200) {
+if (!error && response.statusCode == 200) {
 
-             var results = [];
-             for (let i = 0; i < 5; i++) {
-                 results.push(parsedData['results'][i].title);
-
-            } return res.send(results);
-         }
+    return res.send(parsedData['results']);
+}
     });
 })
 
+// TODO(Lian): figure out if app.get or app.post is getting called, and only keep the one I need.
+// (Does the for loop need to be moved to get()?)
 app.get('/etsy', function (req, res) {
     let keywords = req.body.keywords;
     console.log(req.body);
@@ -120,8 +129,10 @@ app.get('/etsy', function (req, res) {
         if (!error && response.statusCode == 200) {
 
             var results = [];
-            for (let i = 0; i < 5; i++) {
-                results.push(parsedData['results'][i].title);
+            for (let i = 0; i < 4; i++) {
+                results.push(parsedData['results'][i].title),
+                    results.push(parsedData['results'][i].description),
+                    results.push(parsedData['results'][i].listing_id)
                 console.log(results);
             } return res.send(results);
         }
