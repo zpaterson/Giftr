@@ -7,45 +7,14 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const router = express.Router();
 const mysql = require('mysql');
-const passport = require('passport');
-const Auth0Strategy = require('passport-auth0');
+const morgan = require('morgan')
 require('dotenv').load();
 
 const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
 
 const API_URL = process.env.API_URL;
 
-const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
-
-const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
-
-const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN;
-
-
 const SELECT_ALL_PRODUCTS_QUERY = 'SELECT * FROM Products';
-
-const strategy = new Auth0Strategy(
-    {
-        domain: 'AUTH0_DOMAIN',
-        clientID: 'AUTH0_CLIENT_ID',
-        clientSecret:
-            'AUTH0_CLIENT_SECRET',
-        callbackURL: '/callback',
-    },
-    (accessToken, refreshToken, extraParams, profile, done) => {
-        return done(null, profile);
-    },
-);
-
-passport.serializeUser(function (user, done) {
-    done(null, user);
-});
-
-passport.deserializeUser(function (user, done) {
-    done(null, user);
-});
-
-passport.use(strategy);
 
 // Create mySql connection
 const connection = mysql.createConnection({
@@ -65,27 +34,14 @@ connection.connect(err => {
 app.use(cors({ credentials: true, origin: true }));
 app.use(bodyParser.json());
 app.use(expressValidator());
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(morgan("dev"));
 
 
-app.get('/', (req, res) => {
-    // eventually send entire public folder
-    res.send(JSON.stringify(req.user));
-});
+// app.get('/', (req, res) => {
+//     // eventually send entire public folder
+//     res.send(JSON.stringify(req.user));
+// });
 
-app.get('/login', passport.authenticate('auth0', {}), (req, res) =>
-    res.redirect('/'),
-);
-
-app.get(
-    '/callback',
-    passport.authenticate('auth0', { failureRedirect: '/' }),
-    (req, res) => {
-        console.log('USER', req.user);
-        res.redirect(req.session.returnTo || '/');
-    },
-);
 
 // Signup requirements
 app.post('/register', (req, res) => {
@@ -117,6 +73,23 @@ app.post('/register', (req, res) => {
     })
 })
 
+app.post('/added', (req, res) => {
+
+    const productInfo = { 
+        listing_id: req.body.listing_id, 
+        title: req.body.title, 
+        description: req.body.description 
+        
+    };
+    console.log("hello lian", productInfo);
+
+    // Add users to db 
+    connection.query('INSERT INTO Products SET ?', productInfo, (err, results, fields) => {
+        if (err) throw err;
+        res.send({added: 1});
+    })
+})
+
 app.get('/products', function (req, res) {
     connection.query(SELECT_ALL_PRODUCTS_QUERY, (err, results) => {
         if (err) {
@@ -142,15 +115,13 @@ app.post('/etsy', function (req, res) {
 
         if (!error && response.statusCode == 200) {
 
-             var results = [];
-             for (let i = 0; i < 5; i++) {
-                 results.push(parsedData['results'][i].title);
-
-            } return res.send(results);
+            return res.send(parsedData['results']);
          }
     });
 })
 
+// TODO(Lian): figure out if app.get or app.post is getting called, and only keep the one I need.
+// (Does the for loop need to be moved to get()?)
 app.get('/etsy', function (req, res) {
     let keywords = req.body.keywords;
     console.log(req.body);
@@ -160,8 +131,10 @@ app.get('/etsy', function (req, res) {
         if (!error && response.statusCode == 200) {
 
             var results = [];
-            for (let i = 0; i < 5; i++) {
-                results.push(parsedData['results'][i].title);
+            for (let i = 0; i < 4; i++) {
+                results.push(parsedData['results'][i].title),
+                results.push(parsedData['results'][i].description),
+                results.push(parsedData['results'][i].listing_id)
                 console.log(results);
             } return res.send(results);
         }
