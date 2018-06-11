@@ -1,10 +1,9 @@
 import React from 'react';
-//import './search.css';
+import './search.css';
 
 class Search extends React.Component {
   state = {
     searchText: "",
-    amount: 15,
     products: [],
     itemChecked: {}
 };
@@ -28,13 +27,6 @@ class Search extends React.Component {
       .catch(err => console.log(err))
   };
 
-  //TODO: Consider removing items from itemChecked when unchecked (rather than setting to false).
-  checkItem(product, e){
-    let itemChecked = this.state.itemChecked;
-    itemChecked[product] = e.target.checked;
-    this.setState({itemChecked});
-  } 
-
   // onClick = (e) => {
   //   e.preventDefault();
   //   let itemChecked = this.state.itemChecked;
@@ -51,6 +43,14 @@ class Search extends React.Component {
 
   //  // console.log({itemChecked});
   // }
+  
+
+//TODO: Consider removing items from itemChecked when unchecked (rather than setting to false).
+checkItem(product, e) {
+    let itemChecked = this.state.itemChecked;
+    itemChecked[product] = e.target.checked;
+    this.setState({ itemChecked });
+} 
 
   onClick = (e) => {
     e.preventDefault();
@@ -75,26 +75,9 @@ class Search extends React.Component {
     }
   }
   
-
-  // saveProduct = (itemChecked) => {
-  //   fetch('/added', {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       listing_id: itemChecked.listing_id,
-  //       title: itemChecked.title,
-  //       description: itemChecked.description
-  //     }),
-  //     headers: {
-  //       "content-type": "application/json"
-  //     },
-  //   }).then(res => res.json())
-  //   .then(res => console.log(res)) 
-  // }
-
-  
-
   render() {
     console.log("this.state.products:",this.state.products)
+    console.log("this.state.products:",this.state.products[0])
     console.log("this.state.itemChecked:", this.state.itemChecked)
     console.log("this.state.listing_id:", this.state.listing_id)
 

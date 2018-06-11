@@ -19,6 +19,7 @@ exports.up = function(db, callback) {
     id: { type: 'int', primaryKey: true },
     title: 'string',
     description: 'string',
+    listing_id: 'int',
   }, callback);
 };
 
