@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import './search.css';
+import React from 'react';
+//import './search.css';
 
-export default class Search extends Component {
+class Search extends React.Component {
   state = {
     searchText: "",
     amount: 15,
@@ -124,3 +124,5 @@ export default class Search extends Component {
     );
   }
 }
+
+export default Search;
