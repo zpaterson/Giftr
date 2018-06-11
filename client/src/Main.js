@@ -23,15 +23,14 @@ class Main extends React.Component {
 
         return (
             <div>
-            <div className="main-search">
-                <Navbar fluid>
+                <Navbar fluid className="site-main">
                     <Navbar.Header>
                         <Navbar.Brand>
                             <a href="#">Giftr</a>
                         </Navbar.Brand>
                         <Button
-                            bsStyle="primary"
-                            className="btn-margin"
+                            //bsStyle="primary"
+                            //className="btn-margin"
                             onClick={this.goTo.bind(this, 'home')}
                         >
                             Home
@@ -76,7 +75,6 @@ class Main extends React.Component {
                     <div className="container">
                         {this.props.children}
                     </div>
-                </div> 
             <Jumbotron>
                 <div className="main-cta">
                     <h1>Giftr</h1>

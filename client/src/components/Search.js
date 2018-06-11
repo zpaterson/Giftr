@@ -98,8 +98,8 @@ checkItem(product, e) {
               )
               )
             }
-            <button onClick={this.onClick} method="post" action='/added'>Save</button>
           </ul>
+                <button onClick={this.onClick} method="post" action='/added'>Save</button>
         </form>
         <br />
       </div>
