@@ -8,7 +8,6 @@ class Search extends React.Component {
     itemChecked: {}
 };
 
-
   onTextChange = (e) => {
     e.preventDefault();
     let keyword = e.target.searchText.value;
