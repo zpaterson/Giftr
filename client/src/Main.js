@@ -22,9 +22,8 @@ class Main extends React.Component {
         const { isAuthenticated } = this.props.auth;
 
         return (
-            <div className="main-cta">
             <Jumbotron>
-          
+            <div className="main-cta">          
                     <div className="main-search">
                         <Navbar fluid>
                             <Navbar.Header>
@@ -82,10 +81,9 @@ class Main extends React.Component {
                         <div className="container">
                             {this.props.children}
                         </div>
-                    </div>
-         
-                </Jumbotron>
+                    </div>    
             </div>
+            </Jumbotron>
         );
     }
 

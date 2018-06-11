@@ -1,7 +1,7 @@
 // import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Main from './Main';
+//import Main from './Main';
 //import registerServiceWorker from './registerServiceWorker';
 import { makeMainRoutes } from './routes';
 //import Search from './src/components/Search';
