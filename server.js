@@ -99,8 +99,6 @@ app.post('/added', (req, res) => {
     const productInfo = { 
         listing_id: req.body.listing_id, 
         title: req.body.title, 
-        description: req.body.description 
-        
     };
     console.log("hello lian", productInfo);
 

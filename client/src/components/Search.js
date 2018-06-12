@@ -5,7 +5,7 @@ class Search extends React.Component {
   state = {
     searchText: "",
     products: [],
-    itemChecked: {}
+    itemsChecked: []
 };
 
   onTextChange = (e) => {
@@ -49,32 +49,32 @@ class Search extends React.Component {
 
 //TODO: Consider removing items from itemChecked when unchecked (rather than setting to false).
 checkItem(product, e) {
-    let itemChecked = this.state.itemChecked;
-    itemChecked[product.listing_id] = product;
-    this.setState({ itemChecked });
-    console.log("hi i'm here", itemChecked[product.listing_id]);
+    this.state.itemsChecked.push(product);
+    console.log("hiiii product", product);
+    console.log(this.state.itemsChecked);
+    // itemChecked[product.listing_id] = product;
+    // this.setState({ itemChecked });
+    // console.log("hi i'm here", itemsChecked[product.listing_id]);
 } 
 
   onClick = (e) => {
     e.preventDefault();
-
-    let itemChecked = this.state.itemChecked;
-    for (var key in itemChecked) {
-      if (itemChecked[key] === true) {
-        console.log(key)
+    console.log("on click is clicked")
+    // let itemChecked = this.state.itemChecked;
+    for (var index in this.state.itemsChecked) {
+        console.log("hello here is key in for loop");
+        let item = this.state.itemsChecked[index]
         fetch('/added', {
           method: "POST",
           body: JSON.stringify({
-        listing_id: key,
-        title: itemChecked.title,
-        description: itemChecked.description
+        listing_id: item.listing_id,
+        title: item.title,
           }),
           headers: {
             "content-type": "application/json"
           },
         }).then(res => res.json())
           .then(res => console.log(res))
-      }
     }
   }
   
@@ -91,7 +91,7 @@ checkItem(product, e) {
     };
     return (                       
       <div className="search-form">
-        <form onSubmit={this.onTextChange} method="post" action='/etsy'>
+        <form onSubmit={this.onTextChange}>
           <label htmlFor="searchText">What does your friend like?</label><br />
           <input id="searchText" name="searchText" type="text"/>
           <button>Submit</button>
