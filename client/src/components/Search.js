@@ -83,23 +83,26 @@ checkItem(product, e) {
 
     return (
 <div>
-        <Form render={({
-            submitForm
-        }) => (
-                <form onSubmit={submitForm}>
-                    <Text field="firstName" placeholder='First Name' />
-                    <Text field="lastName" placeholder='Last Name' />
-                    <RadioGroup field="gender">
-                        <Radio value="male" />
-                        <Radio value="female" />
-                    </RadioGroup>
-                    <TextArea field="bio" />
-                    <Checkbox field="agreesToTerms" />
-                    <button type="submit">Submit</button>
-                </form>
-            )} />
 
+  <Form render={({
+                submitForm
+            }) => (
+                    <form onSubmit={submitForm}>
+                        <Text field="firstName" placeholder="What's the occasion?" />
+                        <br />
+                        <Text field="lastName" placeholder="What is the recipient's relationship to you?" />
+                        <RadioGroup field="gender">
+                            <Radio value="male" />
+                            <Radio value="female" />
+                        </RadioGroup>
+                        <TextArea field="bio" />
+                        <Checkbox field="agreesToTerms" />
+                        <button type="submit">Submit</button>
+                    </form>
+                )} />
 
+                                    
+                                    
       <div className="search-form">
         <form onSubmit={this.onTextChange} method="post" action='/etsy'>
           <label htmlFor="searchText">What does your friend like?</label><br />
