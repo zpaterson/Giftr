@@ -1,5 +1,4 @@
 import React from 'react';
-import { Form, Text, Radio, RadioGroup, TextArea, Checkbox } from 'react-form';
 import './search.css';
 
 class Search extends React.Component {
@@ -27,6 +26,9 @@ class Search extends React.Component {
       .catch(err => console.log(err))
   };
 
+  // turn products array into a mapping and interate through 
+  // OR in itemChecked when key === true
+
   // onClick = (e) => {
   //   e.preventDefault();
   //   let itemChecked = this.state.itemChecked;
@@ -48,8 +50,9 @@ class Search extends React.Component {
 //TODO: Consider removing items from itemChecked when unchecked (rather than setting to false).
 checkItem(product, e) {
     let itemChecked = this.state.itemChecked;
-    itemChecked[product] = e.target.checked;
+    itemChecked[product.listing_id] = product;
     this.setState({ itemChecked });
+    console.log("hi i'm here", itemChecked[product.listing_id]);
 } 
 
   onClick = (e) => {
@@ -76,33 +79,17 @@ checkItem(product, e) {
   }
   
   render() {
+    if((this.state.products).length){
     console.log("this.state.products:",this.state.products)
-    console.log("this.state.products:",this.state.products[0])
+    console.log("this.state.products first index:",this.state.products[0])
+    console.log("this.state.products listing_id:",this.state.products[0].listing_id)
+    console.log("this.state.products title:",this.state.products[0].title)
+    // var product = this.state.products[0];
+    // console.log(product.listing_id);
     console.log("this.state.itemChecked:", this.state.itemChecked)
-    console.log("this.state.listing_id:", this.state.listing_id)
-
-    return (
-<div>
-
-  <Form render={({
-                submitForm
-            }) => (
-                    <form onSubmit={submitForm}>
-                        <Text field="firstName" placeholder="What's the occasion?" />
-                        <br />
-                        <Text field="lastName" placeholder="What is the recipient's relationship to you?" />
-                        <RadioGroup field="gender">
-                            <Radio value="male" />
-                            <Radio value="female" />
-                        </RadioGroup>
-                        <TextArea field="bio" />
-                        <Checkbox field="agreesToTerms" />
-                        <button type="submit">Submit</button>
-                    </form>
-                )} />
-
-                                    
-                                    
+    //console.log("this.state.listing_id:", this.state.listing_id)
+    };
+    return (                       
       <div className="search-form">
         <form onSubmit={this.onTextChange} method="post" action='/etsy'>
           <label htmlFor="searchText">What does your friend like?</label><br />
@@ -115,7 +102,7 @@ checkItem(product, e) {
             {this.state.products.map(
               product=> (
               <li key={product}>
-                <input type="checkbox" onChange={(e) => this.checkItem(product.listing_id, e) }/>{product.title}
+                <input type="checkbox" onChange={(e) => this.checkItem(product, e) }/>{product.title}
               </li>
               )
               )
@@ -125,7 +112,6 @@ checkItem(product, e) {
         </form>
         <br />
       </div>
-</div>
     );
   }
 }
