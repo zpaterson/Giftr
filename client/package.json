@@ -18,6 +18,7 @@
     "react": "^16.3.2",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
+    "react-form": "^3.5.5",
     "react-history": "^0.18.2",
     "react-onclickoutside": "^6.7.1",
     "react-scripts": "1.1.4"

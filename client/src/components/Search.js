@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form, Text, Radio, RadioGroup, TextArea, Checkbox } from 'react-form';
 import './search.css';
 
 class Search extends React.Component {
@@ -81,10 +82,28 @@ checkItem(product, e) {
     console.log("this.state.listing_id:", this.state.listing_id)
 
     return (
+<div>
+        <Form render={({
+            submitForm
+        }) => (
+                <form onSubmit={submitForm}>
+                    <Text field="firstName" placeholder='First Name' />
+                    <Text field="lastName" placeholder='Last Name' />
+                    <RadioGroup field="gender">
+                        <Radio value="male" />
+                        <Radio value="female" />
+                    </RadioGroup>
+                    <TextArea field="bio" />
+                    <Checkbox field="agreesToTerms" />
+                    <button type="submit">Submit</button>
+                </form>
+            )} />
+
+
       <div className="search-form">
         <form onSubmit={this.onTextChange} method="post" action='/etsy'>
           <label htmlFor="searchText">What does your friend like?</label><br />
-          <input id="searchText" name="searchText" type="text" autoComplete="given-name" />
+          <input id="searchText" name="searchText" type="text"/>
           <button>Submit</button>
         </form>
         <br />
@@ -103,6 +122,7 @@ checkItem(product, e) {
         </form>
         <br />
       </div>
+</div>
     );
   }
 }
