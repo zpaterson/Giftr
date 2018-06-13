@@ -77,7 +77,7 @@ export default class Auth {
     localStorage.removeItem('expires_at');
     this.userProfile = null;
     // navigate to the home route
-    history.replace('/main');
+    history.replace('/home');
   }
 
   isAuthenticated() {

@@ -3,69 +3,35 @@ import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
 import './Profile.css';
 
 class Profile extends Component {
-    state = {
-        profile: {}
+  componentWillMount() {
+    this.setState({ profile: {} });
+    const { userProfile, getProfile } = this.props.auth;
+    if (!userProfile) {
+      getProfile((err, profile) => {
+        this.setState({ profile });
+      });
+    } else {
+      this.setState({ profile: userProfile });
     }
-
-    componentWillMount() {
-        const { userProfile, getProfile } = this.props.auth;
-        if (!userProfile) {
-            getProfile((err, profile) => {
-                this.setState({ profile });
-                this.saveUser(profile);
-            });
-        } else {
-            this.setState({ profile: userProfile });
-        }
-    }
-
-    saveUser = (profile) => {
-        //fetch to db
-        fetch('/profile', {
-            method: 'POST',
-            body: JSON.stringify({
-                email: profile.email,
-                first_name: profile.given_name,
-                last_name: profile.family_name,
-                date: profile.updated_at
-            }),
-            headers: {
-                'content-type': 'application/json'
-            },
-        }).then(res => res.json())
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-    }
-
-
-    render() {
-
-        const { profile } = this.state;
-        console.log(this.props.location.state);
-        return (
-
+  }
+  render() {
+    const { profile } = this.state;
+    return (
+      <div className="container">
+        <div className="profile-area">
+          <h1>{profile.name}</h1>
+          <Panel header="Profile">
+            <img src={profile.picture} alt="profile" />
             <div>
-                {/* <NavBar auth={this.props.auth} history={this.props.history} id={this.props.location.state.id}/> */}
-
-                <div className="profile-area">
-                    <h1>Hello, {profile.given_name}!</h1>
-                    <div className='info-container'>
-                        <div className='user-pic'>
-                            <img src={profile.picture} alt="profile" />
-                        </div>
-                        <div className='user-info'>
-                            <h5><strong>Name</strong>:</h5>
-                            <p>{profile.given_name} {' '}
-                                {profile.family_name}</p>
-                            <hr />
-                            <h5><strong>Email</strong>:</h5>
-                            <p>{profile.email}</p>
-                        </div>
-                    </div>
-                </div>
+              <ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel>
+              <h3>{profile.nickname}</h3>
             </div>
-        );
-    }
+            <pre>{JSON.stringify(profile, null, 2)}</pre>
+          </Panel>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Profile;
