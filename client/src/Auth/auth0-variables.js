@@ -1,5 +1,5 @@
 export const AUTH_CONFIG = {
   domain: 'lianthompson.auth0.com',
-  clientId: '53nK6FLriRfYe7z8TkwXxMJptpDNqoyr',
+  clientId: 'bnTuw2h5Vad3Vlq3TLQwLOLado2LH7NS',
   callbackUrl: 'http://localhost:3000/callback'
 }

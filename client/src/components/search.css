@@ -1,0 +1,9 @@
+ul {
+    list-style-type: none;
+    text-align: left;
+    margin-left: 20%;
+};
+
+.search-form {
+    text-align: center;
+}
