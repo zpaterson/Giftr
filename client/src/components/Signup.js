@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import { Navbar, Button, Nav, Glyphicon } from 'react-bootstrap';
+import './signup.css';
 
 
 class Signup extends Component {
@@ -20,15 +21,19 @@ class Signup extends Component {
 
         return (
             <div>
-                <Navbar fluid>
+                <Navbar fluid className="Menubar">
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="#">Giftr</a>
+                            <Button bsSize="xsmall">
+                                <Glyphicon glyph="gift" />
+                             </Button>
                         </Navbar.Brand>
+                        </Navbar.Header>
+                        <Nav>
                         <Button
                             bsStyle="primary"
                             className="btn-margin"
-                            onClick={this.goTo.bind(this, 'home')}
+                            onClick={this.goTo.bind(this, '/')}
                         >
                             Home
             </Button>
@@ -67,7 +72,7 @@ class Signup extends Component {
                   </Button>
                             )
                         }
-                    </Navbar.Header>
+                    </Nav>
                 </Navbar>
                 <div className="container">
                     {this.props.children}

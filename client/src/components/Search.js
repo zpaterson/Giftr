@@ -78,6 +78,8 @@ checkItem(product, e) {
     }
   }
   
+
+
   render() {
     if((this.state.products).length){
     console.log("this.state.products:",this.state.products)
@@ -89,6 +91,7 @@ checkItem(product, e) {
     console.log("this.state.itemChecked:", this.state.itemChecked)
     //console.log("this.state.listing_id:", this.state.listing_id)
     };
+
     return (                       
       <div className="search-form">
         <form onSubmit={this.onTextChange}>
@@ -108,6 +111,7 @@ checkItem(product, e) {
               )
             }
           </ul>
+          
                 <button onClick={this.onClick} method="post" action='/added'>Save</button>
         </form>
         <br />

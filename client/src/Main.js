@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Jumbotron, Navbar, Button } from 'react-bootstrap';
 import Search from './components/Search';
+import Signup from './components/Signup';
 import './main.css'
-//import Signup from './components/Signup';
 
 
 class Main extends React.Component {
@@ -19,19 +19,19 @@ class Main extends React.Component {
     }
 
     render() {
-        const { isAuthenticated } = this.props.auth;
+         const { isAuthenticated } = this.props.auth;
 
         return (
             <div>
-                <Navbar fluid className="site-main">
+                {/* <Navbar fluid className="site-main">
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="#">Giftr</a>
+                            <a href="/">Giftr</a>
                         </Navbar.Brand>
                         <Button
                             //bsStyle="primary"
                             //className="btn-margin"
-                            onClick={this.goTo.bind(this, 'home')}
+                            onClick={this.goTo.bind(this, '/')}
                         >
                             Home
                         </Button>
@@ -71,10 +71,11 @@ class Main extends React.Component {
                             )
                         }
                     </Navbar.Header>
-                </Navbar>
-                    <div className="container">
+                </Navbar> }
+                     <div className="container">
                         {this.props.children}
-                    </div>
+                    </div> */}
+            <Signup auth={this.props.auth} history={this.props.history} />
             <Jumbotron>
                 <div className="main-cta">
                     <h1>Giftr</h1>

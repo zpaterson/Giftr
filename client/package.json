@@ -22,13 +22,15 @@
     "react-form": "^3.5.5",
     "react-history": "^0.18.2",
     "react-onclickoutside": "^6.7.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "spdy-transport": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "proxy": {
