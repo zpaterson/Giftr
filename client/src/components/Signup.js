@@ -20,22 +20,19 @@ class Signup extends Component {
         const { isAuthenticated } = this.props.auth;
 
         return (
-            <div>
+            <div className="SearchBar">
                 <Navbar fluid className="Menubar">
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <NavItem bsSize="xsmall">
-                                <Glyphicon glyph="gift" />
-                            </NavItem>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
                         <NavItem href="/">
-                            Home
+                            <Glyphicon glyph="gift" />
                         </NavItem>
                         {
                             !isAuthenticated() && (
-                                <NavItem onClick={this.login.bind(this)}>
+                                <NavItem className="Login" onClick={this.login.bind(this)}>
                                     Log In
                                 </NavItem>
                             )

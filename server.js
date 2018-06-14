@@ -129,7 +129,7 @@ app.get('/products', function (req, res) {
 app.post('/etsy', function (req, res) {
     let keywords = req.body.keywords;
     console.log(req.body);
-    request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}&keywords=${keywords}&includes=Images:1`, function (error, response, body) {
+    request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}&keywords=${keywords}&limit=5`, function (error, response, body) {
         var parsedData = JSON.parse(body);
 
         if (!error && response.statusCode == 200) {

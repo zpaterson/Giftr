@@ -79,7 +79,7 @@ checkItem(product, e) {
           <label htmlFor="searchText">What does your friend like?</label><br />
         </span>
           <input id="searchText" name="searchText" type="text"/>
-          <button>Submit</button>
+          <button className="button">Submit</button>
         </form>
         <br />
         <form>
@@ -93,8 +93,7 @@ checkItem(product, e) {
               )
             }
           </ul>
-          
-                <button onClick={this.onClick} method="post" action='/added'>Save</button>
+            <button className="button" onClick={this.onClick} method="post" action='/added'>Save</button>
         </form>
         <br />
       </div>

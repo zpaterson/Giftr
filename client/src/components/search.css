@@ -3,6 +3,7 @@ ul {
     text-align: left;
     margin-left: 20%;
     font-family: 'Yantramanav', sans-serif;
+    font-size: 15px;
 
 };
 
@@ -12,4 +13,9 @@ ul {
 
 .prompt {
     font-family: 'Assistant', sans-serif;
+    letter-spacing: 1px;
+}
+
+.button {
+    border-radius: 20px;
 }
