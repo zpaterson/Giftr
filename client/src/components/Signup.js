@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Button, Nav, Glyphicon } from 'react-bootstrap';
+import { Navbar, Button, Nav, Glyphicon, NavItem } from 'react-bootstrap';
 import './signup.css';
 
 
@@ -24,52 +24,34 @@ class Signup extends Component {
                 <Navbar fluid className="Menubar">
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Button bsSize="xsmall">
+                            <NavItem bsSize="xsmall">
                                 <Glyphicon glyph="gift" />
-                             </Button>
+                            </NavItem>
                         </Navbar.Brand>
-                        </Navbar.Header>
-                        <Nav>
-                        <Button
-                            bsStyle="primary"
-                            className="btn-margin"
-                            onClick={this.goTo.bind(this, '/')}
-                        >
+                    </Navbar.Header>
+                    <Nav>
+                        <NavItem href="/">
                             Home
-            </Button>
+                        </NavItem>
                         {
                             !isAuthenticated() && (
-                                <Button
-                                    id="qsLoginBtn"
-                                    bsStyle="primary"
-                                    className="btn-margin"
-                                    onClick={this.login.bind(this)}
-                                >
+                                <NavItem onClick={this.login.bind(this)}>
                                     Log In
-                  </Button>
+                                </NavItem>
                             )
                         }
                         {
                             isAuthenticated() && (
-                                <Button
-                                    bsStyle="primary"
-                                    className="btn-margin"
-                                    onClick={this.goTo.bind(this, 'profile')}
-                                >
+                                <NavItem onclick={this.goTo.bind(this, "profile")}>
                                     Profile
-                  </Button>
+                                </NavItem>
                             )
                         }
                         {
                             isAuthenticated() && (
-                                <Button
-                                    id="qsLogoutBtn"
-                                    bsStyle="primary"
-                                    className="btn-margin"
-                                    onClick={this.logout.bind(this)}
-                                >
+                                <NavItem onclick={this.logout.bind(this, "logout")}>
                                     Log Out
-                  </Button>
+                                </NavItem>
                             )
                         }
                     </Nav>

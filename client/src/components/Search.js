@@ -25,26 +25,6 @@ class Search extends React.Component {
       .then(results => this.setState({ products: results }))
       .catch(err => console.log(err))
   };
-
-  // turn products array into a mapping and interate through 
-  // OR in itemChecked when key === true
-
-  // onClick = (e) => {
-  //   e.preventDefault();
-  //   let itemChecked = this.state.itemChecked;
-  //   for(var key in itemChecked){
-  //     if(itemChecked[key] === true) {
-  //       console.log(key)
-  //     }
-  //     //if(itemChecked. === true){
-  //       // add to db
-  //      // remove from db
-  //   }
-
-  //   //let item = e.target.itemChecked;
-
-  //  // console.log({itemChecked});
-  // }
   
 
 //TODO: Consider removing items from itemChecked when unchecked (rather than setting to false).
@@ -95,7 +75,9 @@ checkItem(product, e) {
     return (                       
       <div className="search-form">
         <form onSubmit={this.onTextChange}>
+        <span className="prompt">
           <label htmlFor="searchText">What does your friend like?</label><br />
+        </span>
           <input id="searchText" name="searchText" type="text"/>
           <button>Submit</button>
         </form>

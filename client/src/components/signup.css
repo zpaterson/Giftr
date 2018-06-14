@@ -1,3 +1,8 @@
 .Menubar {
     margin-bottom: 0;
+    background-color: white;
+}
+
+.SearchBar {
+    color: yellow;
 }

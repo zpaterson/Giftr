@@ -33,12 +33,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\""
-  },
-  "proxy": {
-    "/*": {
-      "target": "http://localhost:8000",
-      "secure": false,
-      "changeOrigin": true
-    }
   }
 }
