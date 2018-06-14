@@ -24,12 +24,11 @@ class Signup extends Component {
                 <Navbar fluid className="Menubar">
                     <Navbar.Header>
                         <Navbar.Brand>
-                                <Glyphicon glyph="gift" />
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
                         <NavItem href="/">
-                            Home
+                            <Glyphicon glyph="gift" />
                         </NavItem>
                         {
                             !isAuthenticated() && (
