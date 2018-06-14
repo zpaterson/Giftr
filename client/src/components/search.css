@@ -12,6 +12,7 @@ ul {
 
 .prompt {
     font-family: 'Assistant', sans-serif;
+    letter-spacing: 1px;
 }
 
 .button {

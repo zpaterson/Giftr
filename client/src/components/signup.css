@@ -1,12 +1,12 @@
 .Menubar {
     margin-bottom: 0;
+    margin-left: 0;
+    padding-left: 0px;
     background-color: white;
 }
 
-.SearchBar {
-    color: yellow;
-}
+
 
 .Login {
-    text-align: right;
+    text-indent: 1125px;
 }
