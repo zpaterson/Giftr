@@ -33,7 +33,7 @@ class Signup extends Component {
                         </NavItem>
                         {
                             !isAuthenticated() && (
-                                <NavItem onClick={this.login.bind(this)}>
+                                <NavItem className="Login" onClick={this.login.bind(this)}>
                                     Log In
                                 </NavItem>
                             )

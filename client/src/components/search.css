@@ -13,3 +13,7 @@ ul {
 .prompt {
     font-family: 'Assistant', sans-serif;
 }
+
+.button {
+    border-radius: 20px;
+}
