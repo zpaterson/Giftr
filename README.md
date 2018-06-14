@@ -29,7 +29,7 @@ An app that helps you select the perfect gift for those times you just don’t k
     
 4. After setting up your database, run
     
-    `npm run dev`
+    `yarn dev`
 
 ## MySQL Database Setup:
 
@@ -50,18 +50,17 @@ An app that helps you select the perfect gift for those times you just don’t k
 
 ## Current Features:
 
-  * Display dummy data from databases on `localhost:4000/products`
-  * Display landing page on `localhost:3000`
-  * Display redirect page on `localhost:4000`
-  * Add users to database
-  * Database migration scripts
+  * Display data from databases on `localhost:3000/products`
+  * Search Etsy's API and display listings
+  * Add selected listings to database
 
 ## Later Features:
 
-  * User Sign in
-  * Search retreives Etsy API data
-  * Display 3 optimal gift selections
-  * Purchase history page
+  * Auth0
+  * Display 5 optimal gift selections
+  * Add more search parameters
+  * Add CSS
+  * Grab more API data
 
    
     
