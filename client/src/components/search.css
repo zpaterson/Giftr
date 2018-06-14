@@ -2,8 +2,14 @@ ul {
     list-style-type: none;
     text-align: left;
     margin-left: 20%;
+    font-family: 'Yantramanav', sans-serif;
+
 };
 
 .search-form {
     text-align: center;
+}
+
+.prompt {
+    font-family: 'Assistant', sans-serif;
 }

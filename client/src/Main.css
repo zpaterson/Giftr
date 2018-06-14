@@ -1,5 +1,7 @@
 .main-cta {
     text-align: center;
+    background-color: #fff68f;
+
 }
 
 nav.site-main {
@@ -8,5 +10,10 @@ nav.site-main {
 
 h1 {
     font-family: 'Pacifico', cursive;
+    padding-bottom: 15px;
+    color: white;
+}
 
+div.jumbotron {
+    background-color: #fff68f;
 }
