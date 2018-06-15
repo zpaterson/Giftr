@@ -26,10 +26,10 @@ class Products extends Component {
 
     }
 
-    renderProduct = ({ product_id, name }) =>
-        <li
-            key={product_id}>{name}
-        </li>
+    // renderProduct = ({ product_id, name }) =>
+    //     <li
+    //         key={product_id}>{name}
+    //     </li>
 
     render() {
         const { products } = this.state;

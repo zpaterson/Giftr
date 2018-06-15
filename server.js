@@ -17,7 +17,7 @@ const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
 
 const API_URL = process.env.API_URL;
 
-const SELECT_ALL_PRODUCTS_QUERY = 'SELECT * FROM Products';
+const PRODUCT_TITLES_QUERY = 'SELECT TITLE FROM Products';
 
 // Create mySql connection
 const connection = mysql.createConnection({
@@ -112,7 +112,7 @@ app.post('/added', (req, res) => {
 })
 
 app.get('/products', function (req, res) {
-    connection.query(SELECT_ALL_PRODUCTS_QUERY, (err, results) => {
+    connection.query(PRODUCT_TITLES_QUERY, (err, results) => {
         if (err) {
             console.log(err);
             return res.send(err)
@@ -151,7 +151,7 @@ app.get('/etsy', function (req, res) {
 
     let keywords = req.body.keywords;
     console.log(req.body);
-    request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}&keywords=${keywords}&limit=${limit}`, function (error, response, body) {
+    request(`http://openapi.etsy.com/v2/listings/active?fields=listing_id,title,description/method=GET&api_key=${API_KEY}&keywords=${keywords}&limit=${limit}`, function (error, response, body) {
         var parsedData = JSON.parse(body);
 
         if (!error && response.statusCode == 200) {

@@ -7,20 +7,21 @@ class Search extends React.Component {
     searchText: "",
     products: [],
     itemsChecked: [],
-    amount: ""
+    searchLimit: "",
+    recipient: ""
 };
 
 
   onTextChange = (e) => {
     e.preventDefault();
     let keyword = e.target.searchText.value;
-    let amount = e.target.amount.value;
+    let limit = e.target.searchLimit.value;
 
     fetch('/etsy', {
       method: 'POST',
       body: JSON.stringify({
         keywords: keyword,
-        amount: amount
+        amount: limit
       }),
       headers: {
         'content-type': 'application/json'
@@ -75,15 +76,17 @@ checkItem(product, e) {
     return (                       
       <div className="search-form">
         <form onSubmit={this.onTextChange}>
-        <renderDropDownButton/>
         <span className="prompt">
-          <label htmlFor="searchText">What does your friend like?</label>
+          <label htmlFor="recipient">Who is this gift for?</label>
+            <input id="recipient" name="recipient" type="text" />
+            <br />
+          <label htmlFor="searchText">What do they like?</label>
             <input id="searchText" name="searchText" type="text" />
             <br />
-          <label htmlFor="amount">Number of recomendations:</label>
-            <input id="amount" name="amount" type="text" />
+          <label htmlFor="searchLimit">Search Limit:</label>
+            <input id="searchLimit" name="searchLimit" type="text" />
             <br />
-          <button className="button">Submit</button>
+          <button className="submitButton">Submit</button>
         </span>
         </form>
         <br />
