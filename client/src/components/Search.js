@@ -38,7 +38,7 @@ checkItem(product, e) {
 
   onClick = (e) => {
     e.preventDefault();
-    console.log("on click is clicked")
+    alert("Saved!")
     // let itemChecked = this.state.itemChecked;
     for (var index in this.state.itemsChecked) {
         console.log("hello here is key in for loop");
