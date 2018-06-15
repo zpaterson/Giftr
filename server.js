@@ -10,6 +10,8 @@ const mysql = require('mysql');
 const logger = require('morgan')
 require('dotenv').load();
 
+//app.engine('html', require('ejs').renderFile);
+//app.set('view engine', 'html');
 
 const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
 
@@ -128,8 +130,9 @@ app.get('/products', function (req, res) {
 
 app.post('/etsy', function (req, res) {
     let keywords = req.body.keywords;
+    let limit = req.body.amount;
     console.log(req.body);
-    request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}&keywords=${keywords}&limit=5`, function (error, response, body) {
+    request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}&keywords=${keywords}&limit=${limit}`, function (error, response, body) {
         var parsedData = JSON.parse(body);
 
         if (!error && response.statusCode == 200) {
@@ -148,7 +151,7 @@ app.get('/etsy', function (req, res) {
 
     let keywords = req.body.keywords;
     console.log(req.body);
-    request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}&keywords=${keywords}&includes=Images:1`, function (error, response, body) {
+    request(`http://openapi.etsy.com/v2/listings/active?method=GET&api_key=${API_KEY}&keywords=${keywords}&limit=${limit}`, function (error, response, body) {
         var parsedData = JSON.parse(body);
 
         if (!error && response.statusCode == 200) {
