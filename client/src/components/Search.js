@@ -5,17 +5,22 @@ class Search extends React.Component {
   state = {
     searchText: "",
     products: [],
-    itemsChecked: []
+    itemsChecked: [],
+    searchLimit: "",
+    recipient: "",
+    
 };
 
   onTextChange = (e) => {
     e.preventDefault();
     let keyword = e.target.searchText.value;
+    let limit = e.target.searchLimit.value;
 
     fetch('/etsy', {
       method: 'POST',
       body: JSON.stringify({
-        keywords: keyword
+        keywords: keyword,
+        amount: limit
       }),
       headers: {
         'content-type': 'application/json'
@@ -25,16 +30,10 @@ class Search extends React.Component {
       .then(results => this.setState({ products: results }))
       .catch(err => console.log(err))
   };
-  
 
 //TODO: Consider removing items from itemChecked when unchecked (rather than setting to false).
 checkItem(product, e) {
     this.state.itemsChecked.push(product);
-    console.log("hiiii product", product);
-    console.log(this.state.itemsChecked);
-    // itemChecked[product.listing_id] = product;
-    // this.setState({ itemChecked });
-    // console.log("hi i'm here", itemsChecked[product.listing_id]);
 } 
 
   onClick = (e) => {
@@ -59,27 +58,39 @@ checkItem(product, e) {
   }
   
 
-
   render() {
+
+    let saveButton = "";
+
     if((this.state.products).length){
-    console.log("this.state.products:",this.state.products)
-    console.log("this.state.products first index:",this.state.products[0])
-    console.log("this.state.products listing_id:",this.state.products[0].listing_id)
-    console.log("this.state.products title:",this.state.products[0].title)
-    // var product = this.state.products[0];
-    // console.log(product.listing_id);
-    console.log("this.state.itemChecked:", this.state.itemChecked)
-    //console.log("this.state.listing_id:", this.state.listing_id)
-    };
+        saveButton = <button className="saveButton" onClick={this.onClick} method="post" action='/added'>Save</button>
+      };
+
+    // console.log("this.state.products:",this.state.products)
+    // console.log("this.state.products first index:",this.state.products[0])
+    // console.log("this.state.products listing_id:",this.state.products[0].listing_id)
+    // console.log("this.state.products title:",this.state.products[0].title)
+    // // var product = this.state.products[0];
+    // // console.log(product.listing_id);
+    // console.log("this.state.itemChecked:", this.state.itemChecked)
+    // //console.log("this.state.listing_id:", this.state.listing_id)
+
 
     return (                       
       <div className="search-form">
         <form onSubmit={this.onTextChange}>
         <span className="prompt">
-          <label htmlFor="searchText">What does your friend like?</label><br />
+          <label htmlFor="recipient">Who is this gift for?</label>
+            <input id="recipient" name="recipient" type="text" />
+            <br />
+          <label htmlFor="searchText">What do they like?</label>
+            <input id="searchText" name="searchText" type="text" />
+            <br />
+          <label htmlFor="searchLimit">Search Limit:</label>
+            <input id="searchLimit" name="searchLimit" type="text" />
+            <br />
+          <button className="submitButton">Submit</button>
         </span>
-          <input id="searchText" name="searchText" type="text"/>
-          <button className="button">Submit</button>
         </form>
         <br />
         <form>
@@ -93,7 +104,7 @@ checkItem(product, e) {
               )
             }
           </ul>
-            <button className="button" onClick={this.onClick} method="post" action='/added'>Save</button>
+          {saveButton}
         </form>
         <br />
       </div>

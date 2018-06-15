@@ -28,7 +28,7 @@ class Signup extends Component {
                     </Navbar.Header>
                     <Nav>
                         <NavItem href="/">
-                            <Glyphicon glyph="gift" />
+                            <Glyphicon glyph="gift" onClick={this.goTo.bind(this, 'home')}/>
                         </NavItem>
                         {
                             !isAuthenticated() && (

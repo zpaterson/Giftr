@@ -7,8 +7,8 @@ ul {
 
 };
 
-.search-form {
-    text-align: center;
+.prompt {
+    text-align: left;
 }
 
 .prompt {
@@ -18,4 +18,14 @@ ul {
 
 .button {
     border-radius: 20px;
+}
+
+.submitButton {
+    border-radius: 20px;
+    margin-top: 5px;
+}
+
+.saveButton {
+    border-radius: 20px;
+    margin-top: 5px;
 }
