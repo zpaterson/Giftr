@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Jumbotron, Navbar, Button } from 'react-bootstrap';
 import Search from './components/Search';
 import Signup from './components/Signup';
@@ -20,7 +20,7 @@ class Main extends React.Component {
     }
 
     render() {
-         const { isAuthenticated } = this.props.auth;
+        const { isAuthenticated } = this.props.auth;
 
         return (
             <div>

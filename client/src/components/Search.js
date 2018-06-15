@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './search.css';
 
 class Search extends React.Component {
@@ -8,9 +7,9 @@ class Search extends React.Component {
     products: [],
     itemsChecked: [],
     searchLimit: "",
-    recipient: ""
+    recipient: "",
+    
 };
-
 
   onTextChange = (e) => {
     e.preventDefault();
@@ -31,7 +30,6 @@ class Search extends React.Component {
       .then(results => this.setState({ products: results }))
       .catch(err => console.log(err))
   };
-  
 
 //TODO: Consider removing items from itemChecked when unchecked (rather than setting to false).
 checkItem(product, e) {
@@ -60,9 +58,14 @@ checkItem(product, e) {
   }
   
 
-
   render() {
+
+    let saveButton = "";
+
     if((this.state.products).length){
+        saveButton = <button className="saveButton" onClick={this.onClick} method="post" action='/added'>Save</button>
+      };
+
     // console.log("this.state.products:",this.state.products)
     // console.log("this.state.products first index:",this.state.products[0])
     // console.log("this.state.products listing_id:",this.state.products[0].listing_id)
@@ -71,7 +74,7 @@ checkItem(product, e) {
     // // console.log(product.listing_id);
     // console.log("this.state.itemChecked:", this.state.itemChecked)
     // //console.log("this.state.listing_id:", this.state.listing_id)
-    };
+
 
     return (                       
       <div className="search-form">
@@ -101,7 +104,7 @@ checkItem(product, e) {
               )
             }
           </ul>
-            <button className="button" onClick={this.onClick} method="post" action='/added'>Save</button>
+          {saveButton}
         </form>
         <br />
       </div>
