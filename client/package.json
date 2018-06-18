@@ -33,7 +33,7 @@
     "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\""
   },
   "proxy": {
-    "/*": {
+    "/etsy": {
       "target": "http://localhost:8000",
       "secure": false,
       "changeOrigin": true
