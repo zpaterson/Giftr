@@ -7,21 +7,8 @@ import './Main.css';
 
 
 class Main extends React.Component {
-    goTo(route) {
-        this.props.history.replace(`/${route}`)
-    }
-
-    login() {
-        this.props.auth.login();
-    }
-
-    logout() {
-        this.props.auth.logout();
-    }
 
     render() {
-        const { isAuthenticated } = this.props.auth;
-
         return (
             <div>
             <Signup auth={this.props.auth} history={this.props.history} />

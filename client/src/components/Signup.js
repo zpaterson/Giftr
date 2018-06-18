@@ -5,7 +5,7 @@ import './signup.css';
 
 class Signup extends Component {
     goTo(route) {
-        this.props.history.replace(`/${route}`)
+        this.props.history.replace(`${route}`)
     }
 
     login() {
@@ -21,12 +21,57 @@ class Signup extends Component {
 
         return (
             <div className="SearchBar">
-                <Navbar fluid className="Menubar">
+
+                <Navbar fluid className="header">
                     <Navbar.Header>
                         <Navbar.Brand>
+                            <a href="/">                            <Glyphicon glyph="gift" onClick={this.goTo.bind(this, 'home')} />
+</a>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
+                        {
+                            !isAuthenticated() && (
+                                <NavItem className="Login" onClick={this.login.bind(this)}>
+                                    Log In
+                                </NavItem>
+                            )
+                        }
+                        {
+                            isAuthenticated() && (
+                                <Button
+                                    bsStyle="primary"
+                                    className="btn-margin"
+                                    onClick={this.goTo.bind(this, 'profile')}
+                                >
+                                    Profile
+                  </Button>
+                            )
+                        }
+                        {
+                            isAuthenticated() && (
+                                <Button
+                                    id="qsLogoutBtn"
+                                    bsStyle="primary"
+                                    className="btn-margin"
+                                    onClick={this.logout.bind(this)}
+                                >
+                                    Log Out
+                  </Button>
+                            )
+                        }
+                    </Nav>
+                </Navbar>
+                <div className="container">
+                    {this.props.children}
+                </div>
+
+                {/* <Navbar fluid className="Menubar"> */}
+                    {/* <Navbar.Header>
+                        <Navbar.Brand>
+                        </Navbar.Brand>
+                    </Navbar.Header> */}
+                    {/* <Nav>
                         <NavItem href="/">
                             <Glyphicon glyph="gift" onClick={this.goTo.bind(this, 'home')}/>
                         </NavItem>
@@ -51,11 +96,11 @@ class Signup extends Component {
                                 </NavItem>
                             )
                         }
-                    </Nav>
-                </Navbar>
-                <div className="container">
+                    </Nav> */}
+                {/* </Navbar> */}
+                {/* <div className="container">
                     {this.props.children}
-                </div>
+                </div> */}
             </div>
         );
     }
