@@ -26,7 +26,7 @@
     "spdy-transport": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start && yarn dev",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -34,7 +34,7 @@
   },
   "proxy": {
     "/etsy": {
-      "target": "http://localhost:4000",
+      "target": "http://localhost:000",
       "secure": false,
       "changeOrigin": true
     },
