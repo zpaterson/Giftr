@@ -8,7 +8,8 @@
         "postinstall": "cd client && yarn install",
         "client": "cd client && yarn start",
         "server": "nodemon server.js",
-        "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\""
+        "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
+        "heroku-postbuild": "heroku-nextjs-build"
     },
     "dependencies": {
         "auth0-js": "^9.6.1",
@@ -45,6 +46,7 @@
         "concurrently": "^3.5.0"
     },
     "engines": {
-        "node": "10.4.0"
+        "node": "10.4.0",
+        "npm": "6.1.0"
     }
 }
