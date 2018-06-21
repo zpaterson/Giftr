@@ -21,6 +21,7 @@
         "db-migrate": "^0.11.1",
         "db-migrate-mysql": "^1.1.10",
         "dotenv": "^5.0.1",
+        "ejs": "^2.6.1",
         "express": "^4.16.2",
         "express-jwt": "^5.3.1",
         "express-validator": "^5.2.0",
