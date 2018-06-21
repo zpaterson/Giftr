@@ -10,8 +10,9 @@ const mysql = require('mysql');
 const logger = require('morgan')
 require('dotenv').load();
 
-//app.engine('html', require('ejs').renderFile);
-//app.set('view engine', 'html');
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
 
