@@ -43,5 +43,8 @@
     },
     "devDependencies": {
         "concurrently": "^3.5.0"
+    },
+    "engines": {
+        "node": "10.4.0"
     }
 }
