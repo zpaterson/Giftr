@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const request = require('request');
-const port = 8000;
+//const port = 8000;
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const router = express.Router();
@@ -183,7 +183,7 @@ app.use(function (err, req, res, next) {
 //     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 // });
 //app.listen(process.env.PORT || 8000);
-app.listen(process.env.PORT, '0.0.0.0')
+//app.listen(process.env.PORT, '0.0.0.0')
 
 //app.listen(port, () => console.log(`Listening on port ${port}` || 5000));
 
