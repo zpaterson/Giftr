@@ -42,6 +42,7 @@ app.use(bodyParser.json());
 app.use(expressValidator());
 app.use(logger("dev")); 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static("client/build"));
 
 
 
