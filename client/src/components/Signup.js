@@ -26,7 +26,7 @@ class Signup extends Component {
                     <Navbar.Header>
                         <Navbar.Brand>
                             <a href="/"> <Glyphicon glyph="gift" onClick={this.goTo.bind(this, 'home')} />
-</a>
+                            </a>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>

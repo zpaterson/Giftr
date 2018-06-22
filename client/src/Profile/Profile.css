@@ -1,8 +1,15 @@
 .profile-area img {
   max-width: 150px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .panel-body h3 {
   margin-top: 0;
+}
+
+.profile-area h1 {
+ font-family: 'Assistant', sans-serif;
+ color: black;
+ font-size:40px;
 }

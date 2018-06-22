@@ -42,8 +42,8 @@ class Profile extends Component {
     return (
       <div className="container">
         <div className="profile-area">
-          <h1>Hey, {profile.given_name}</h1>
           <Panel header="Profile">
+            <h1>Hi, {profile.given_name}</h1>
             <img src={profile.picture} alt="profile" />
             <div>
             <div className='user-info'>
