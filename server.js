@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const request = require('request');
-const port = 8000;
+const port = process.env.PORT || 8000;
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const router = express.Router();
@@ -186,6 +186,6 @@ app.use(function (err, req, res, next) {
 //app.listen(process.env.PORT || 8000);
 //app.listen(process.env.PORT, '0.0.0.0')
 
-app.listen(port, () => console.log(`Listening on port ${port}` || 5000));
+app.listen(port, () => console.log(`Listening on port ${port}` || 8000));
 
 module.exports = app;
