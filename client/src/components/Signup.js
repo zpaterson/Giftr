@@ -25,7 +25,7 @@ class Signup extends Component {
                 <Navbar fluid className="header">
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="/">                            <Glyphicon glyph="gift" onClick={this.goTo.bind(this, 'home')} />
+                            <a href="/"> <Glyphicon glyph="gift" onClick={this.goTo.bind(this, 'home')} />
 </a>
                         </Navbar.Brand>
                     </Navbar.Header>
@@ -73,9 +73,9 @@ class Signup extends Component {
                         }
                     </Nav>
                 </Navbar>
-                <div className="container">
+                {/* <div className="container">
                     {this.props.children}
-                </div>
+                </div> */}
 
                 {/* <Navbar fluid className="Menubar"> */}
                     {/* <Navbar.Header>
