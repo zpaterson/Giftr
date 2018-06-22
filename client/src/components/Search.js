@@ -7,6 +7,7 @@ class Search extends React.Component {
     products: [],
     itemsChecked: [],
     searchLimit: "",
+    occasion: "",
     recipient: "",
     
 };
@@ -85,6 +86,9 @@ checkItem(product, e) {
             <br />
           <label htmlFor="searchText">What do they like?</label>
             <input id="searchText" name="searchText" type="text" />
+            <br />
+          <label htmlFor="occasion">What's the occasion?</label>
+            <input id="occasion" name="occasion" type="text" />
             <br />
           <label htmlFor="searchLimit">Search Limit:</label>
             <input id="searchLimit" name="searchLimit" type="text" />
