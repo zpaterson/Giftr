@@ -1,21 +1,37 @@
-.main-cta {
+div.main-cta {
     text-align: center;
     background-color: #fff68f;
+    margin-top: 10%;
+    margin-bottom: 200px;
+}
 
+div.body {
+    margin-top: 50%;
+    background-color: #fff68f;
 }
 
 nav.site-main {
     margin: 0;
 }
 
-h1 {
+div.main-cta h1 {
     font-family: 'Pacifico', cursive;
-    padding-bottom: 15px;
+    padding-bottom: 45px;
     color: white;
-    text-shadow: 10px white;
     letter-spacing: 2px; 
+    font-size: 100px;
 }
 
 div.jumbotron {
     background-color: #fff68f;
+    height: 100vh;
+}
+
+div.SearchBar {
+    margin-bottom: 0;
+}
+
+.profile {
+    font-family: 'Yantramanav', sans-serif;
+    color: black;
 }

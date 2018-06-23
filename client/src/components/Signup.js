@@ -25,10 +25,10 @@ class Signup extends Component {
                 <Navbar fluid className="header">
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="/">                            <Glyphicon glyph="gift" onClick={this.goTo.bind(this, 'home')} />
-</a>
+                            <a href="/"> 
+                            <Glyphicon glyph="gift" font-size="50px" onClick={this.goTo.bind(this, 'home')} />
+                            </a>
                         </Navbar.Brand>
-                    </Navbar.Header>
                     <Nav>
                         {
                             !isAuthenticated() && (
@@ -45,7 +45,18 @@ class Signup extends Component {
                                     onClick={this.goTo.bind(this, 'profile')}
                                 >
                                     Profile
-                  </Button>
+                                </Button>
+                            )
+                        }
+                        {
+                            isAuthenticated() && (
+                                <Button
+                                    bsStyle="primary"
+                                    className="btn-margin"
+                                    onClick={this.goTo.bind(this, 'products')}
+                                >
+                                    Product History
+                                </Button>
                             )
                         }
                         {
@@ -61,10 +72,11 @@ class Signup extends Component {
                             )
                         }
                     </Nav>
+                    </Navbar.Header>
                 </Navbar>
-                <div className="container">
+                {/* <div className="container">
                     {this.props.children}
-                </div>
+                </div> */}
 
                 {/* <Navbar fluid className="Menubar"> */}
                     {/* <Navbar.Header>

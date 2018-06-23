@@ -1,19 +1,22 @@
 ul {
     list-style-type: none;
     text-align: left;
-    margin-left: 20%;
+    margin-left: 25%;
     font-family: 'Yantramanav', sans-serif;
-    font-size: 15px;
-
+    font-size: 16px;
+    letter-spacing: .5px;
 };
 
-.prompt {
+div.form {
     text-align: left;
+    font-size: 30px;
 }
 
-.prompt {
+span.prompt {
     font-family: 'Assistant', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
+    font-size: 16px;
+
 }
 
 .button {
@@ -28,4 +31,5 @@ ul {
 .saveButton {
     border-radius: 20px;
     margin-top: 5px;
+    size: 30px;
 }

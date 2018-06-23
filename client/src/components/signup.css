@@ -1,12 +1,13 @@
-.Menubar {
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-left: 0px;
-    background-color: white;
+.header {
+    margin: 0;
 }
 
-
+.glyph {
+    font-size: 25px;
+}
 
 .Login {
     text-indent: 1250px;
+    font-size: 20px;
 }
+

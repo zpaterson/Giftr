@@ -7,6 +7,7 @@ class Search extends React.Component {
     products: [],
     itemsChecked: [],
     searchLimit: "",
+    occasion: "",
     recipient: "",
     
 };
@@ -86,6 +87,9 @@ checkItem(product, e) {
           <label htmlFor="searchText">What do they like?</label>
             <input id="searchText" name="searchText" type="text" />
             <br />
+          <label htmlFor="occasion">What's the occasion?</label>
+            <input id="occasion" name="occasion" type="text" />
+            <br />
           <label htmlFor="searchLimit">Search Limit:</label>
             <input id="searchLimit" name="searchLimit" type="text" />
             <br />
@@ -98,7 +102,7 @@ checkItem(product, e) {
             {this.state.products.map(
               product=> (
               <li key={product}>
-                <input type="checkbox" onChange={(e) => this.checkItem(product, e) }/>{product.title}
+                <input type="checkbox" onChange={(e) => this.checkItem(product, e) }/>{" "}{product.title}
               </li>
               )
               )
