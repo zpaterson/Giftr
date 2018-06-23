@@ -4,7 +4,7 @@ ul {
     margin-left: 20%;
     font-family: 'Yantramanav', sans-serif;
     font-size: 16px;
-
+    letter-spacing: .5px;
 };
 
 div.form {
@@ -31,4 +31,5 @@ span.prompt {
 .saveButton {
     border-radius: 20px;
     margin-top: 5px;
+    size: 30px;
 }
