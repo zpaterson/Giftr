@@ -2,7 +2,12 @@
     margin: 0;
 }
 
+.glyph {
+    font-size: 25px;
+}
 
 .Login {
     text-indent: 1250px;
+    font-size: 20px;
 }
+

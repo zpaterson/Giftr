@@ -25,10 +25,10 @@ class Signup extends Component {
                 <Navbar fluid className="header">
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="/"> <Glyphicon glyph="gift" onClick={this.goTo.bind(this, 'home')} />
+                            <a href="/"> 
+                            <Glyphicon glyph="gift" font-size="50px" onClick={this.goTo.bind(this, 'home')} />
                             </a>
                         </Navbar.Brand>
-                    </Navbar.Header>
                     <Nav>
                         {
                             !isAuthenticated() && (
@@ -72,6 +72,7 @@ class Signup extends Component {
                             )
                         }
                     </Nav>
+                    </Navbar.Header>
                 </Navbar>
                 {/* <div className="container">
                     {this.props.children}

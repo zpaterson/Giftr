@@ -102,7 +102,7 @@ checkItem(product, e) {
             {this.state.products.map(
               product=> (
               <li key={product}>
-                <input type="checkbox" onChange={(e) => this.checkItem(product, e) }/>{product.title}
+                <input type="checkbox" onChange={(e) => this.checkItem(product, e) }/>{" "}{product.title}
               </li>
               )
               )
