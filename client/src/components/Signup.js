@@ -33,43 +33,43 @@ class Signup extends Component {
                     <Nav>
                         {
                             !isAuthenticated() && (
-                                <NavItem className="Login" onClick={this.login.bind(this)}>
+                                <NavItem className="Login" onClick={this.logout}>
                                     Log In
                                 </NavItem>
                             )
                         }
                         {
                             isAuthenticated() && (
-                                <Button
+                                <NavItem
                                     //bsStyle="primary"
-                                    className="btn-margin"
+                                    // className="btn-margin"
                                     onClick={this.goTo.bind(this, 'profile')}
                                 >
                                     Profile
-                                </Button>
+                                </NavItem>
                             )
                         }
                         {
                             isAuthenticated() && (
-                                <Button
+                                <NavItem
                                     //bsStyle="primary"
-                                    className="btn-margin"
+                                    //className="btn-margin"
                                     onClick={this.goTo.bind(this, 'products')}
                                 >
                                     Product History
-                                </Button>
+                                </NavItem>
                             )
                         }
                         {
                             isAuthenticated() && (
-                                <Button
+                                <NavItem
                                     id="qsLogoutBtn"
                                     //bsStyle="primary"
-                                    className="btn-margin"
+                                    //className="btn-margin"
                                     onClick={this.logout.bind(this)}
                                 >
                                     Log Out
-                  </Button>
+                                </NavItem>
                             )
                         }
                     </Nav>
