@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import Signup from '../components/Signup';
 import './products.css';
 
 
@@ -23,9 +24,7 @@ class Products extends Component {
             .catch(err => console.error(err))
         // console.log(data);
         //   console.log(this.state.products);
-
     }
-
     // renderProduct = ({ product_id, name }) =>
     //     <li
     //         key={product_id}>{name}
@@ -34,10 +33,13 @@ class Products extends Component {
     render() {
         const { products } = this.state;
         return (
-            <div className="Products">
-                 {products.map(product =>this.renderProduct)}
-                 {/* <p>{products}</p> */}
-             </div>
+            <div>
+                {/* <Signup auth={this.props.auth} history={this.props.history} /> */}
+                    <div className="Products">
+                        {/* {products.map(products =>this.renderProduct)} */}
+                        <p>{products}</p>
+                    </div>
+            </div>
         );
     }
 }
