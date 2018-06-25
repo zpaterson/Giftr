@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Glyphicon } from 'react-bootstrap';
 import './signup.css';
-
 
 class Signup extends Component {
     goTo(route) {
