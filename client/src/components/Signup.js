@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Button, Nav, Glyphicon, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
 import './signup.css';
 
 
@@ -20,9 +20,9 @@ class Signup extends Component {
         const { isAuthenticated } = this.props.auth;
 
         return (
-            <div className="SearchBar">
+            <div>
 
-                <Navbar fluid className="header">
+                {/* <Navbar fluid className="header">
                     <Navbar.Header>
                         <Navbar.Brand>
                             <a href="/" className='btn-margin'> 
@@ -30,10 +30,11 @@ class Signup extends Component {
                             </a>
                         </Navbar.Brand>
                     </Navbar.Header>
-                    <Nav>
+                    <ul>
+                    <Nav className='nav-items'>
                         {
                             !isAuthenticated() && (
-                                <NavItem className="Login" onClick={this.logout}>
+                                <NavItem className="Login" onClick={this.login.bind(this)}>
                                     Log In
                                 </NavItem>
                             )
@@ -41,8 +42,7 @@ class Signup extends Component {
                         {
                             isAuthenticated() && (
                                 <NavItem
-                                    //bsStyle="primary"
-                                    // className="btn-margin"
+    
                                     onClick={this.goTo.bind(this, 'profile')}
                                 >
                                     Profile
@@ -52,8 +52,7 @@ class Signup extends Component {
                         {
                             isAuthenticated() && (
                                 <NavItem
-                                    //bsStyle="primary"
-                                    //className="btn-margin"
+                                    
                                     onClick={this.goTo.bind(this, 'products')}
                                 >
                                     Product History
@@ -64,8 +63,7 @@ class Signup extends Component {
                             isAuthenticated() && (
                                 <NavItem
                                     id="qsLogoutBtn"
-                                    //bsStyle="primary"
-                                    //className="btn-margin"
+                            
                                     onClick={this.logout.bind(this)}
                                 >
                                     Log Out
@@ -73,7 +71,66 @@ class Signup extends Component {
                             )
                         }
                     </Nav>
+                    </ul>
+                </Navbar> */}
+
+                <Navbar fluid collapseOnSelect>
+                    <Navbar.Header>
+                        <Navbar.Brand>
+                            <a href="/" className='btn-margin'>
+                                <Glyphicon glyph="gift" font-size="50px" onClick={this.goTo.bind(this)} />
+                            </a>
+                        </Navbar.Brand>
+                        <Navbar.Toggle />
+                    </Navbar.Header>
+                    <Navbar.Collapse>
+                        <Nav pullRight>
+                            {
+                                !isAuthenticated() && (
+                                    <NavItem className="Login" onClick={this.login.bind(this)}>
+                                        Log In
+                                </NavItem>
+                                )
+                            }
+                            {
+                                isAuthenticated() && (
+                                    <NavItem
+
+                                        onClick={this.goTo.bind(this, 'profile')}
+                                    >
+                                        Profile
+                                </NavItem>
+                                )
+                            }
+                            {
+                                isAuthenticated() && (
+                                    <NavItem
+
+                                        onClick={this.goTo.bind(this, 'products')}
+                                    >
+                                        Product History
+                                </NavItem>
+                                )
+                            }
+                            {
+                                isAuthenticated() && (
+                                    <NavItem
+                                        id="qsLogoutBtn"
+
+                                        onClick={this.logout.bind(this)}
+                                    >
+                                        Log Out
+                                </NavItem>
+                                )
+                            }
+                        </Nav>
+                    </Navbar.Collapse>
                 </Navbar>
+                
+                
+                
+                
+                                
                 {/* <div className="container">
                     {this.props.children}
                 </div> */}
@@ -169,5 +226,8 @@ class Signup extends Component {
 //         );
 //     }
 // }
+
+
+
 
 export default Signup;

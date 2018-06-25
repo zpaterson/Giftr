@@ -98,7 +98,7 @@ checkItem(product, e) {
         </form>
         <br />
         <form className="list">
-          <ul>
+          <ul className='results-list'>
             {this.state.products.map(
               product=> (
               <li key={product}>

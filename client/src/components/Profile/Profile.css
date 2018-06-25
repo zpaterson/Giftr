@@ -1,7 +1,7 @@
+
 .profile-area img {
   max-width: 150px;
   margin-bottom: 20px;
-  text-align: center;
 }
 
 .panel-body h3 {
@@ -12,4 +12,26 @@
  font-family: 'Assistant', sans-serif;
  color: black;
  font-size:40px;
+ /* border: 3px solid red; */
+
 }
+
+.profile-area {
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.info-container {
+    /* border: 3px solid purple; */
+
+}
+
+
+
+
+
