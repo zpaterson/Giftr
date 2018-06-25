@@ -92,7 +92,7 @@ app.post('/profile', function (req, res) {
     };
     connection.query('INSERT INTO Users SET ?', formInfo, (err, results, fields) => {
         if (err) throw err;
-        res.send({ banana: 3 })
+        res.send('Registration complete')
     })
 });
 

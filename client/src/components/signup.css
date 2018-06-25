@@ -1,5 +1,10 @@
 .header {
     margin: 0;
+    font-size: 40px;
+}
+
+.SearchBar {
+    font-size: 40px;
 }
 
 .glyph {
@@ -11,3 +16,6 @@
     font-size: 20px;
 }
 
+.btn-margin {
+    font-size: 20px;
+}

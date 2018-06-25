@@ -1,8 +1,6 @@
 import React from 'react';
-import { Redirect, Route, Router } from 'react-router-dom';
-//import App from './App';
+import { Switch, Redirect, Route, Router } from 'react-router-dom';
 import Main from './Main';
-// import Home from './Home/Home';
 import Profile from './Profile/Profile';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
@@ -20,9 +18,9 @@ const handleAuthentication = ({location}) => {
 export const makeMainRoutes = () => {
   return (
     <Router history={history}>
-        <div>
-          <Route path="/" render={(props) => <Main auth={auth} {...props} />} />
-          <Route path="/products" render={(props) => <Products auth={auth} {...props} />} />
+        <Switch>
+          <Route exact path="/" render={(props) => <Main auth={auth} {...props} />} />
+          <Route exact path="/products" render={(props) => <Products auth={auth} {...props} />} />
           <Route path="/profile" render={(props) => (
             !auth.isAuthenticated() ? (
               <Redirect to="/"/>
@@ -30,11 +28,11 @@ export const makeMainRoutes = () => {
               <Profile auth={auth} {...props} />
             )
           )} />
-          <Route path="/callback" render={(props) => {
+          <Route exact path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 
           }}/>        
-        </div>
+        </Switch>
       </Router>
   );
 }

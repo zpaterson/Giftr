@@ -25,10 +25,11 @@ class Signup extends Component {
                 <Navbar fluid className="header">
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="/"> 
-                            <Glyphicon glyph="gift" font-size="50px" onClick={this.goTo.bind(this, 'home')} />
+                            <a href="/" className='btn-margin'> 
+                            <Glyphicon glyph="gift" font-size="50px" onClick={this.goTo.bind(this)} />
                             </a>
                         </Navbar.Brand>
+                    </Navbar.Header>
                     <Nav>
                         {
                             !isAuthenticated() && (
@@ -40,7 +41,7 @@ class Signup extends Component {
                         {
                             isAuthenticated() && (
                                 <Button
-                                    bsStyle="primary"
+                                    //bsStyle="primary"
                                     className="btn-margin"
                                     onClick={this.goTo.bind(this, 'profile')}
                                 >
@@ -51,7 +52,7 @@ class Signup extends Component {
                         {
                             isAuthenticated() && (
                                 <Button
-                                    bsStyle="primary"
+                                    //bsStyle="primary"
                                     className="btn-margin"
                                     onClick={this.goTo.bind(this, 'products')}
                                 >
@@ -63,7 +64,7 @@ class Signup extends Component {
                             isAuthenticated() && (
                                 <Button
                                     id="qsLogoutBtn"
-                                    bsStyle="primary"
+                                    //bsStyle="primary"
                                     className="btn-margin"
                                     onClick={this.logout.bind(this)}
                                 >
@@ -72,7 +73,6 @@ class Signup extends Component {
                             )
                         }
                     </Nav>
-                    </Navbar.Header>
                 </Navbar>
                 {/* <div className="container">
                     {this.props.children}
