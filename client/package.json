@@ -43,11 +43,6 @@
       "secure": false,
       "changeOrigin": true
     },
-    "/products": {
-      "target": "http://localhost:8000",
-      "secure": false,
-      "changeOrigin": true
-    },
     "/profile": {
         "target": "http://localhost:8000",
         "secure": false,
