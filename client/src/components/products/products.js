@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Signup from '../components/Signup';
+import Signup from '../Signup';
 import './products.css';
 
 
@@ -31,11 +31,12 @@ class Products extends Component {
         const { products } = this.state;
         const renderProduct = (title) =>
         <li
-            key={title}>{title}
+            key={title}>
+            {title}
         </li>
         return (
             <div>
-                {/* <Signup auth={this.props.auth} history={this.props.history} /> */}
+                <Signup auth={this.props.auth} history={this.props.history} />
                     <div className="Products">
                     <ul>
                         {products.map(product =>renderProduct(product.TITLE))}
