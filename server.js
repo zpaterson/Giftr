@@ -129,6 +129,22 @@ app.get('/products', function (req, res) {
     })
 });
 
+// app.post('/products', function (req, res) {
+//     connection.query(PRODUCT_TITLES_QUERY, (err, results) => {
+//         if (err) {
+//             console.log(err);
+//             return res.send(err)
+//         } else {
+//             // displays db query in terminal
+//             // console.log(results);
+//             // Display db query in GUI
+//             return res.json({
+//                 data: results
+//             })
+//         }
+//     })
+// });
+
 
 app.post('/etsy', function (req, res) {
     let keywords = req.body.keywords;
