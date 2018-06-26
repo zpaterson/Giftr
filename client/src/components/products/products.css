@@ -1,10 +1,12 @@
-div.page {
+.Products {
     background-color: #fff68f;
+    border: solid #fff68f 2px;
 }
 
 .Products > h1 {
     text-align: center;
-    margin-top: 20px;
+    font-family: 'Assistant', sans-serif;
+
 }
 
 .Products > ul {

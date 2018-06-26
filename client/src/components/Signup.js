@@ -20,59 +20,6 @@ class Signup extends Component {
 
         return (
             <div>
-
-                {/* <Navbar fluid className="header">
-                    <Navbar.Header>
-                        <Navbar.Brand>
-                            <a href="/" className='btn-margin'> 
-                            <Glyphicon glyph="gift" font-size="50px" onClick={this.goTo.bind(this)} />
-                            </a>
-                        </Navbar.Brand>
-                    </Navbar.Header>
-                    <ul>
-                    <Nav className='nav-items'>
-                        {
-                            !isAuthenticated() && (
-                                <NavItem className="Login" onClick={this.login.bind(this)}>
-                                    Log In
-                                </NavItem>
-                            )
-                        }
-                        {
-                            isAuthenticated() && (
-                                <NavItem
-    
-                                    onClick={this.goTo.bind(this, 'profile')}
-                                >
-                                    Profile
-                                </NavItem>
-                            )
-                        }
-                        {
-                            isAuthenticated() && (
-                                <NavItem
-                                    
-                                    onClick={this.goTo.bind(this, 'products')}
-                                >
-                                    Product History
-                                </NavItem>
-                            )
-                        }
-                        {
-                            isAuthenticated() && (
-                                <NavItem
-                                    id="qsLogoutBtn"
-                            
-                                    onClick={this.logout.bind(this)}
-                                >
-                                    Log Out
-                                </NavItem>
-                            )
-                        }
-                    </Nav>
-                    </ul>
-                </Navbar> */}
-
                 <Navbar fluid collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
@@ -88,87 +35,36 @@ class Signup extends Component {
                                 !isAuthenticated() && (
                                     <NavItem className="Login" onClick={this.login.bind(this)}>
                                         Log In
-                                </NavItem>
+                                    </NavItem>
                                 )
                             }
                             {
                                 isAuthenticated() && (
                                     <NavItem
-
-                                        onClick={this.goTo.bind(this, 'profile')}
-                                    >
+                                        onClick={this.goTo.bind(this, 'profile')}>
                                         Profile
-                                </NavItem>
+                                    </NavItem>
                                 )
                             }
                             {
                                 isAuthenticated() && (
                                     <NavItem
-
-                                        onClick={this.goTo.bind(this, 'products')}
-                                    >
+                                        onClick={this.goTo.bind(this, 'products')}>
                                         Product History
-                                </NavItem>
+                                    </NavItem>
                                 )
                             }
                             {
                                 isAuthenticated() && (
                                     <NavItem
-                                        id="qsLogoutBtn"
-
-                                        onClick={this.logout.bind(this)}
-                                    >
+                                        id="qsLogoutBtn" onClick={this.logout.bind(this)}>
                                         Log Out
-                                </NavItem>
+                                    </NavItem>
                                 )
                             }
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-                
-                
-                
-                
-                                
-                {/* <div className="container">
-                    {this.props.children}
-                </div> */}
-
-                {/* <Navbar fluid className="Menubar"> */}
-                    {/* <Navbar.Header>
-                        <Navbar.Brand>
-                        </Navbar.Brand>
-                    </Navbar.Header> */}
-                    {/* <Nav>
-                        <NavItem href="/">
-                            <Glyphicon glyph="gift" onClick={this.goTo.bind(this, 'home')}/>
-                        </NavItem>
-                        {
-                            !isAuthenticated() && (
-                                <NavItem className="Login" onClick={this.login.bind(this)}>
-                                    Log In
-                                </NavItem>
-                            )
-                        }
-                        {
-                            isAuthenticated() && (
-                                <NavItem onclick={this.goTo.bind(this, "profile")}>
-                                    Profile
-                                </NavItem>
-                            )
-                        }
-                        {
-                            isAuthenticated() && (
-                                <NavItem onclick={this.logout.bind(this, "logout")}>
-                                    Log Out
-                                </NavItem>
-                            )
-                        }
-                    </Nav> */}
-                {/* </Navbar> */}
-                {/* <div className="container">
-                    {this.props.children}
-                </div> */}
             </div>
         );
     }
