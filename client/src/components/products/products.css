@@ -1,5 +1,10 @@
+div.page {
+    background-color: #fff68f;
+}
+
 .Products > h1 {
     text-align: center;
+    margin-top: 20px;
 }
 
 .Products > ul {
