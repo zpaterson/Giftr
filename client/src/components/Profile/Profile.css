@@ -2,6 +2,7 @@
 .profile-area img {
   max-width: 150px;
   margin-bottom: 20px;
+  border-radius: 100px;
 }
 
 .panel-body h3 {

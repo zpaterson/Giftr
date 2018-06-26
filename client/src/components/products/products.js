@@ -38,6 +38,7 @@ class Products extends Component {
             <div>
                 <Signup auth={this.props.auth} history={this.props.history} />
                     <div className="Products">
+                    <h1>Your saved products:</h1>
                     <ul>
                         {products.map(product =>renderProduct(product.TITLE))}
                     </ul>
