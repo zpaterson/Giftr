@@ -127,22 +127,6 @@ app.get('/products', function (req, res) {
     })
 });
 
-// app.post('/products', function (req, res) {
-//     connection.query(PRODUCT_TITLES_QUERY, (err, results) => {
-//         if (err) {
-//             console.log(err);
-//             return res.send(err)
-//         } else {
-//             // displays db query in terminal
-//             // console.log(results);
-//             // Display db query in GUI
-//             return res.json({
-//                 data: results
-//             })
-//         }
-//     })
-// });
-
 
 app.post('/etsy', function (req, res) {
     let keywords = req.body.keywords;
@@ -163,25 +147,11 @@ app.post('/etsy', function (req, res) {
 
 
 // get request is displaying them on the page
-app.get('/etsy', function (req, res) {
+// app.get('/etsy', function (req, res) {
 
-    let keywords = req.body.keywords;
-    console.log(req.body);
-    request(`http://openapi.etsy.com/v2/listings/active?fields=listing_id,title,description/method=GET&api_key=${API_KEY}&keywords=${keywords}&limit=${limit}`, function (error, response, body) {
-        var parsedData = JSON.parse(body);
-
-        if (!error && response.statusCode == 200) {
-
-            var results = [];
-            for (let i = 0; i < 1; i++) {
-                results.push(parsedData['results'][i].title),
-                results.push(parsedData['results'][i].description),
-                results.push(parsedData['results'][i].listing_id)
-                console.log(results);
-            } return res.send(results);
-        }
-    });
-});
+//     let keywords = req.body.keywords;
+//     console.log(req.body);
+// });
 
 // error handler for MySQL
 app.use(function (err, req, res, next) {
