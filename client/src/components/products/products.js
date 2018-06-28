@@ -35,7 +35,7 @@ class Products extends Component {
             {title}
         </li>
         return (
-            <div>
+            <div className="page">
                 <Signup auth={this.props.auth} history={this.props.history} />
                     <div className="Products">
                     <h1>Your saved products:</h1>

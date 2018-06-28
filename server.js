@@ -10,10 +10,6 @@ const mysql = require('mysql');
 const logger = require('morgan')
 require('dotenv').load();
 
-
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-
 const API_KEY = process.env.REACT_APP_ETSY_API_KEY;
 
 const API_URL = process.env.API_URL;
@@ -52,37 +48,6 @@ app.use(express.static("client/build"));
 // });
 
 
-// Signup requirements
-// app.post('/register', (req, res) => {
-//     //console.log (req.body);
-//     req.checkBody('firstName', 'Cannot be empty').notEmpty();
-//     req.checkBody('email', 'The email you entered is invalid, please try again.').isEmail();
-//     req.checkBody('email', 'Email address must be between 4-100 characters long, please try again.').len(4, 100);
-//     req.checkBody('password', 'Password must be between 8-100 characters long.').len(8, 100);
-//     req.checkBody("password", "Password must include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i");
-//     // req.checkBody('passwordMatch', 'Password must be between 8-100 characters long.').len(8, 100);
-//     // req.checkBody('passwordMatch', 'Passwords do not match, please try again.').equals(req.body.password);
-
-//     const errors = req.validationErrors();
-//     if (errors) {
-//         console.log(`errors: ${JSON.stringify(errors)}`);
-
-//         res.send("Registration Error");
-
-//         return;
-//     }
-
-//     const user = { firstName: req.body.firstName, lastName: req.body.lastName, password: req.body.password, email: req.body.email }
-
-//     // Add users to db 
-//     connection.query('INSERT INTO Users SET ?', user, (err, results, fields) => {
-//         if (err) throw err;
-//         console.log("HELLO");
-//         res.send('Registration Complete');
-//     })
-// })
-
-
 //connection from Auth0 profile info to import to  db
 app.post('/profile', function (req, res) {
     console.log( "i'm here!" ,req.body.email);
@@ -93,8 +58,12 @@ app.post('/profile', function (req, res) {
         date: req.body.date
     };
     connection.query('INSERT INTO Users SET ?', formInfo, (err, results, fields) => {
-        if (err) throw err;
-        res.send('Registration complete')
+        if (err){
+            console.log(err);
+            res.send('Registration failed: ' + err.message)
+        } else {
+            res.send('Registration complete')
+        }
     })
 });
 
@@ -114,6 +83,7 @@ app.post('/added', (req, res) => {
 })
 
 app.get('/products', function (req, res) {
+    console.log("hello from server")
     connection.query(PRODUCT_TITLES_QUERY, (err, results) => {
         if (err) {
             console.log(err);
@@ -129,22 +99,6 @@ app.get('/products', function (req, res) {
     })
 });
 
-// app.post('/products', function (req, res) {
-//     connection.query(PRODUCT_TITLES_QUERY, (err, results) => {
-//         if (err) {
-//             console.log(err);
-//             return res.send(err)
-//         } else {
-//             // displays db query in terminal
-//             // console.log(results);
-//             // Display db query in GUI
-//             return res.json({
-//                 data: results
-//             })
-//         }
-//     })
-// });
-
 
 app.post('/etsy', function (req, res) {
     let keywords = req.body.keywords;
@@ -159,31 +113,6 @@ app.post('/etsy', function (req, res) {
          }
     });
 })
-
-// TODO(Lian): figure out if app.get or app.post is getting called, and only keep the one I need.
-// (Does the for loop need to be moved to get()?)
-
-
-// get request is displaying them on the page
-app.get('/etsy', function (req, res) {
-
-    let keywords = req.body.keywords;
-    console.log(req.body);
-    request(`http://openapi.etsy.com/v2/listings/active?fields=listing_id,title,description/method=GET&api_key=${API_KEY}&keywords=${keywords}&limit=${limit}`, function (error, response, body) {
-        var parsedData = JSON.parse(body);
-
-        if (!error && response.statusCode == 200) {
-
-            var results = [];
-            for (let i = 0; i < 1; i++) {
-                results.push(parsedData['results'][i].title),
-                results.push(parsedData['results'][i].description),
-                results.push(parsedData['results'][i].listing_id)
-                console.log(results);
-            } return res.send(results);
-        }
-    });
-});
 
 // error handler for MySQL
 app.use(function (err, req, res, next) {
