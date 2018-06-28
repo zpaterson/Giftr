@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const request = require('request');
-const port = 8000;
+const port = process.env.PORT || 8000;
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const router = express.Router();
@@ -38,6 +38,7 @@ app.use(bodyParser.json());
 app.use(expressValidator());
 app.use(logger("dev")); 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static("client/build"));
 
 
 
@@ -124,6 +125,12 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+// app.listen(process.env.PORT || 5000, function () {
+//     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+// });
+//app.listen(process.env.PORT || 8000);
+//app.listen(process.env.PORT, '0.0.0.0')
+
+app.listen(port, () => console.log(`Listening on port ${port}` || 8000));
 
 module.exports = app;
