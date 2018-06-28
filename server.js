@@ -57,8 +57,12 @@ app.post('/profile', function (req, res) {
         date: req.body.date
     };
     connection.query('INSERT INTO Users SET ?', formInfo, (err, results, fields) => {
-        if (err) throw err;
-        res.send('Registration complete')
+        if (err){
+            console.log(err);
+            res.send('Registration failed: ' + err.message)
+        } else {
+            res.send('Registration complete')
+        }
     })
 });
 
@@ -78,6 +82,7 @@ app.post('/added', (req, res) => {
 })
 
 app.get('/products', function (req, res) {
+    console.log("hello from server")
     connection.query(PRODUCT_TITLES_QUERY, (err, results) => {
         if (err) {
             console.log(err);
