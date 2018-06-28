@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import { Jumbotron, Navbar, Button } from 'react-bootstrap';
+import React from 'react';
+import { Jumbotron} from 'react-bootstrap';
 import Search from './components/Search';
 import Signup from './components/Signup';
 import './Main.css';
