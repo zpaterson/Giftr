@@ -35,20 +35,6 @@ class Profile extends Component {
             .catch(err => console.log(err))
   }
 
-
-    // componentWillMount() {
-    //     const { userProfile, getProfile } = this.props.auth;
-    //     //if there is already not a userProfile, then getProfile
-    //     //pass that profile info to saveUserData so it can send it to the backend
-    //     if (!userProfile) {
-    //         getProfile((err, profile) => {
-    //             this.setState({ profile });
-    //         });
-    //     } else {
-    //         this.setState({ profile: userProfile });
-    //     }
-    // }
-
     render() {
         const { profile } = this.state;
         console.log(this.props.location.state);
