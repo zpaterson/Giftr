@@ -12,7 +12,7 @@ class Products extends Component {
     componentDidMount() {
         this.getProducts();
     }
-
+    
     //displays the product history page
     getProducts = () => {
         console.log("getting products");
