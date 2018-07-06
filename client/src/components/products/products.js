@@ -27,7 +27,6 @@ class Products extends Component {
            console.log(this.state.products);
     }
 
-
     render() {
         const { products } = this.state;
         const renderProduct = (title) =>
