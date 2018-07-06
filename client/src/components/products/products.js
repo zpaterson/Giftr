@@ -13,6 +13,7 @@ class Products extends Component {
         this.getProducts();
     }
 
+    //displays the product history page
     getProducts = () => {
         console.log("getting products");
         // looks for /products in server.js
